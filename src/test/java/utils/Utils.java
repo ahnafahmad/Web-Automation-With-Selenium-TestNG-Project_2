@@ -36,4 +36,10 @@ public class Utils {
 
     }
 
+    public void saveJsonList(String userEmail, String userPassword){
+
+        String fileName = "./src/test/resources/user.json";
+
+    }
+
 }

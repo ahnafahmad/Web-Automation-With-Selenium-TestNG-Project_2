@@ -3,6 +3,7 @@ package testRunner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CreateAccountPage;
+import pages.LoginPage;
 import pages.SignupPage;
 import setup.Setup;
 import utils.Utils;
@@ -10,7 +11,9 @@ import utils.Utils;
 public class CreateAccountTestRunner extends Setup {
 
     SignupPage signupPage;
+    LoginPage loginPage;
     CreateAccountPage createAccountPage;
+    Utils utils;
 
     @Test(priority = 1)
     public void signUpSuccessfully() throws InterruptedException {
@@ -43,7 +46,7 @@ public class CreateAccountTestRunner extends Setup {
         String newUserEmail = utils.getFirstName() + "@gmail.com";
 
 
-        signupPage.doLogin(newUserName, newUserEmail);
+        signupPage.doSignUp(newUserName, newUserEmail);
         Thread.sleep(3000);
 
 
@@ -58,7 +61,7 @@ public class CreateAccountTestRunner extends Setup {
     public void enteredAccountInformationSuccessfully() throws InterruptedException {
 
         createAccountPage = new CreateAccountPage(driver);
-        Utils utils = new Utils();
+        utils = new Utils();
         utils.randomData();
 
         String password = "admin123";
@@ -94,22 +97,48 @@ public class CreateAccountTestRunner extends Setup {
         Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
 
 
-        createAccountPage.navDeleteAccount.click();
+//        createAccountPage.navDeleteAccount.click();
 
 
-        // Account Deletion Successful Page Assertion
-        String actualAccountDeletedPage = createAccountPage.accountDeletedSuccessfulAssertion.getText();
-        String expectedAccountDeletedPage = "ACCOUNT DELETED!";
-        Assert.assertTrue(actualAccountDeletedPage.contains(expectedAccountDeletedPage));
+//        // Account Deletion Successful Page Assertion
+//        String actualAccountDeletedPage = createAccountPage.accountDeletedSuccessfulAssertion.getText();
+//        String expectedAccountDeletedPage = "ACCOUNT DELETED!";
+//        Assert.assertTrue(actualAccountDeletedPage.contains(expectedAccountDeletedPage));
 
 
         createAccountPage.btnContinue.click();
 
 
-        // After Account Deletion Home Page Assertion
-        String actualAccountDeletedHomePage = createAccountPage.afterAccountDeletionHomePageAssertion.getText();
-        String expectedAccountDeletedHomePage = "Signup / Login";
-        Assert.assertTrue(actualAccountDeletedHomePage.contains(expectedAccountDeletedHomePage));
+//        // After Account Deletion Home Page Assertion
+//        String actualAccountDeletedHomePage = createAccountPage.afterAccountDeletionHomePageAssertion.getText();
+//        String expectedAccountDeletedHomePage = "Signup / Login";
+//        Assert.assertTrue(actualAccountDeletedHomePage.contains(expectedAccountDeletedHomePage));
+
+        createAccountPage.logOutAccount.click();
+
+
+        // After Logout the Account Home Page Assertion
+        String actualAccountLogoutHomePage = createAccountPage.afterAccountLogoutHomePageAssertion.getText();
+        String expectedAccountLogoutHomePage = "Signup / Login";
+        Assert.assertTrue(actualAccountLogoutHomePage.contains(expectedAccountLogoutHomePage));
+
+    }
+
+    @Test(priority = 3)
+    public void loginSuccessfulWithValidCredentials(){
+
+        loginPage = new LoginPage(driver);
+        utils = new Utils();
+
+
+        // Login/Signup Page Assertion
+        String actualSignupPage = createAccountPage.newUserSignupAssertion.getText();
+        String expectedSignupPage = "Login to your account";
+        Assert.assertTrue(actualSignupPage.contains(expectedSignupPage));
+
+
+        String userEmail = utils.getUserName();
+        String newUserEmail = utils.getFirstName() + "@gmail.com";
 
     }
 

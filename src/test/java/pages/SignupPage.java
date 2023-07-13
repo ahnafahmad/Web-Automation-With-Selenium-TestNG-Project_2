@@ -29,7 +29,7 @@ public class SignupPage {
         PageFactory.initElements(driver,this);
     }
 
-    public void doLogin(String newUserName, String newUserEmail){
+    public void doSignUp(String newUserName, String newUserEmail){
 
         txtUserName.sendKeys(newUserName);
         txtEmail.sendKeys(newUserEmail);
