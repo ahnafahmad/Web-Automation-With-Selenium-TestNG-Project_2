@@ -8,6 +8,7 @@ import lombok.Setter;
 @Setter
 public class Utils {
 
+    private String userName;
     private String firstName;
     private String lastName;
     private String company;
@@ -22,6 +23,7 @@ public class Utils {
     public void randomData(){
 
         Faker faker = new Faker();
+        setUserName(faker.name().username());
         setFirstName(faker.name().firstName());
         setLastName(faker.name().lastName());
         setCompany(faker.company().name());
@@ -31,7 +33,6 @@ public class Utils {
         setCity(faker.address().city());
         setZipCode(faker.address().zipCode());
         setMobileNumber(faker.phoneNumber().cellPhone());
-
 
     }
 

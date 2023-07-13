@@ -14,7 +14,9 @@ public class CreateAccountTestRunner extends Setup {
 
     @Test(priority = 1)
     public void signUpSuccessfully() throws InterruptedException {
+
         driver.get("https://www.automationexercise.com");
+
         signupPage = new SignupPage(driver);
         createAccountPage = new CreateAccountPage(driver);
         Utils utils = new Utils();
@@ -37,7 +39,7 @@ public class CreateAccountTestRunner extends Setup {
         Assert.assertTrue(actualSignupPage.contains(expectedSignupPage));
 
 
-        String newUserName = "Admin";
+        String newUserName = utils.getUserName();
         String newUserEmail = utils.getFirstName() + "@gmail.com";
 
 
