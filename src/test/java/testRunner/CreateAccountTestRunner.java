@@ -1,5 +1,6 @@
 package testRunner;
 
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.CreateAccountPage;
@@ -8,12 +9,16 @@ import pages.SignupPage;
 import setup.Setup;
 import utils.Utils;
 
+import java.io.IOException;
+
 public class CreateAccountTestRunner extends Setup {
 
     SignupPage signupPage;
     LoginPage loginPage;
     CreateAccountPage createAccountPage;
     Utils utils;
+
+    String newUserEmail;
 
     @Test(priority = 1)
     public void signUpSuccessfully() throws InterruptedException {
@@ -43,7 +48,7 @@ public class CreateAccountTestRunner extends Setup {
 
 
         String newUserName = utils.getUserName();
-        String newUserEmail = utils.getFirstName() + "@gmail.com";
+        newUserEmail = utils.getFirstName() + "@gmail.com";
 
 
         signupPage.doSignUp(newUserName, newUserEmail);
@@ -58,7 +63,7 @@ public class CreateAccountTestRunner extends Setup {
     }
 
     @Test(priority = 2)
-    public void enteredAccountInformationSuccessfully() throws InterruptedException {
+    public void enteredAccountInformationSuccessfully() throws InterruptedException, IOException, ParseException {
 
         createAccountPage = new CreateAccountPage(driver);
         utils = new Utils();
@@ -97,6 +102,11 @@ public class CreateAccountTestRunner extends Setup {
         Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
 
 
+        Utils.waitForElement(driver, createAccountPage.accountCreatedSuccessfulAssertion, 50);
+        if (createAccountPage.accountCreatedSuccessfulAssertion.isDisplayed()) {
+            utils.saveJsonList(newUserEmail, password);
+
+
 //        createAccountPage.navDeleteAccount.click();
 
 
@@ -124,22 +134,22 @@ public class CreateAccountTestRunner extends Setup {
 
     }
 
-    @Test(priority = 3)
-    public void loginSuccessfulWithValidCredentials(){
-
-        loginPage = new LoginPage(driver);
-        utils = new Utils();
-
-
-        // Login/Signup Page Assertion
-        String actualSignupPage = createAccountPage.newUserSignupAssertion.getText();
-        String expectedSignupPage = "Login to your account";
-        Assert.assertTrue(actualSignupPage.contains(expectedSignupPage));
-
-
-        String userEmail = utils.getUserName();
-        String newUserEmail = utils.getFirstName() + "@gmail.com";
-
-    }
+//    @Test(priority = 3)
+//    public void loginSuccessfulWithValidCredentials() {
+//
+//            loginPage = new LoginPage(driver);
+//            utils = new Utils();
+//
+//
+//            // Login/Signup Page Assertion
+//            String actualSignupPage = createAccountPage.newUserSignupAssertion.getText();
+//            String expectedSignupPage = "Login to your account";
+//            Assert.assertTrue(actualSignupPage.contains(expectedSignupPage));
+//
+//
+//            String userEmail = utils.getUserName();
+//            String newUserEmail = utils.getFirstName() + "@gmail.com";
+//
+//        }
 
 }
