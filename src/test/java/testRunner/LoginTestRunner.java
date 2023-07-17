@@ -1,2 +1,77 @@
-package testRunner;public class LoginTestRunner {
+package testRunner;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import pages.CreateAccountPage;
+import pages.LoginPage;
+import pages.SignupPage;
+import setup.Setup;
+import utils.Utils;
+
+import java.io.IOException;
+import java.util.List;
+
+public class LoginTestRunner extends Setup {
+
+    LoginPage loginPage;
+    CreateAccountPage createAccountPage;
+    Utils utils;
+
+    SignupPage signupPage;
+
+
+    @Test(priority = 1)
+    public void loginSuccessfulWithValidCredentials() throws IOException, ParseException, InterruptedException {
+
+        driver.get("https://www.automationexercise.com");
+
+        createAccountPage = new CreateAccountPage(driver);
+        loginPage = new LoginPage(driver);
+        signupPage = new SignupPage(driver);
+        utils = new Utils();
+
+        signupPage.navLogin.click();
+
+        // Login/Signup Page Assertion
+        String actualSignupPage = loginPage.loginAssertion.getText();
+        String expectedSignupPage = "Login to your account";
+        Assert.assertTrue(actualSignupPage.contains(expectedSignupPage));
+
+        String file = "./src/test/resources/user.json";
+
+        List users = Utils.readJsondata(file);
+
+        JSONObject userObject = (JSONObject) users.get(users.size()-1);
+
+        String userEmail = (String) userObject.get("userEmail");
+        String userPassword = (String) userObject.get("userPassword");
+        Thread.sleep(1000);
+
+        loginPage.doLogin(userEmail,userPassword);
+
+        // After Account Creation Home Page Assertion
+        String actualAccountCreatedHomePage = createAccountPage.afterAccountCreationHomePageAssertion.getText();
+        String expectedAccountCreatedHomePage = "Logged in as";
+        Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
+
+        createAccountPage.navDeleteAccount.click();
+
+
+        // Account Deletion Successful Page Assertion
+        String actualAccountDeletedPage = createAccountPage.accountDeletedSuccessfulAssertion.getText();
+        String expectedAccountDeletedPage = "ACCOUNT DELETED!";
+        Assert.assertTrue(actualAccountDeletedPage.contains(expectedAccountDeletedPage));
+
+
+        createAccountPage.btnContinue.click();
+
+
+        // After Account Deletion Home Page Assertion
+        String actualAccountDeletedHomePage = createAccountPage.afterAccountDeletionHomePageAssertion.getText();
+        String expectedAccountDeletedHomePage = "Signup / Login";
+        Assert.assertTrue(actualAccountDeletedHomePage.contains(expectedAccountDeletedHomePage));
+
+    }
 }

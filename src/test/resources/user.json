@@ -1,1 +1,42 @@
-[{"userPassword":"admin123","userEmail":"Vashti@gmail.com"},{"userPassword":"admin123","userEmail":"Iva@gmail.com"},{"userPassword":"admin123","userEmail":"Jan@gmail.com"},{"userPassword":"admin123","userEmail":"maryjane.greenfelder@gmail.com"},{"userPassword":"admin123","userEmail":"Refugio@gmail.com"}]
+[
+  {
+    "userPassword": "admin123",
+    "userEmail": "Vashti@gmail.com"
+  },
+  {
+    "userPassword": "admin123",
+    "userEmail": "Iva@gmail.com"
+  },
+  {
+    "userPassword": "admin123",
+    "userEmail": "Jan@gmail.com"
+  },
+  {
+    "userPassword": "admin123",
+    "userEmail": "maryjane.greenfelder@gmail.com"
+  },
+  {
+    "userPassword": "admin123",
+    "userEmail": "Refugio@gmail.com"
+  },
+  {
+    "userPassword": "admin123",
+    "userEmail": "karan.funk@gmail.com"
+  },
+  {
+    "userPassword": "admin123",
+    "userEmail": "margarito.rath@gmail.com"
+  },
+  {
+    "userPassword": "admin123",
+    "userEmail": "lizabeth.oberbrunner@gmail.com"
+  },
+  {
+    "userPassword": "admin123",
+    "userEmail": "dixie.kiehn@gmail.com"
+  },
+  {
+    "userPassword": "admin123",
+    "userEmail": "robert.maggio@gmail.com"
+  }
+]

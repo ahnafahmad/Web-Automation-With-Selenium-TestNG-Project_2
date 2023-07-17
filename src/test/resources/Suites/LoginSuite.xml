@@ -1,8 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Orange HRM Update employee Information Automation Suite">
-    <test name="Employee can update self information">
+<suite name="Automation Exercise Website Login Automation Suite">
+    <test name="User can Login Successfully by their own Account Credentials">
         <classes>
-            <class name="testRunner.UpdateEmployeeTestRunner"/>
+            <class name="testRunner.LoginTestRunner"/>
         </classes>
     </test>
 </suite>
