@@ -77,11 +77,11 @@ public class CreateAccountPage {
     @FindBy(xpath = "//a[contains(text(),'Logged in as')]")
     public WebElement afterAccountCreationHomePageAssertion;
 
-//    @FindBy(xpath = "//a[contains(text(),' Delete Account')]")
-//    public WebElement navDeleteAccount;
+    @FindBy(xpath = "//a[contains(text(),' Delete Account')]")
+    public WebElement navDeleteAccount;
 
-//    @FindBy(xpath = "//b[contains(text(),'Account Deleted!')]")
-//    public WebElement accountDeletedSuccessfulAssertion;
+    @FindBy(xpath = "//b[contains(text(),'Account Deleted!')]")
+    public WebElement accountDeletedSuccessfulAssertion;
 
     @FindBy(xpath = "//a[contains(text(),'Signup / Login')]")
     public WebElement afterAccountDeletionHomePageAssertion;

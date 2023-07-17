@@ -1,5 +1,6 @@
 package testRunner;
 
+import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -10,6 +11,7 @@ import setup.Setup;
 import utils.Utils;
 
 import java.io.IOException;
+import java.util.List;
 
 public class CreateAccountTestRunner extends Setup {
 
@@ -18,7 +20,7 @@ public class CreateAccountTestRunner extends Setup {
     CreateAccountPage createAccountPage;
     Utils utils;
 
-    String newUserEmail;
+    String userEmail;
 
     @Test(priority = 1)
     public void signUpSuccessfully() throws InterruptedException {
@@ -48,10 +50,10 @@ public class CreateAccountTestRunner extends Setup {
 
 
         String newUserName = utils.getUserName();
-        newUserEmail = utils.getFirstName() + "@gmail.com";
+        userEmail = utils.getUserName() + "@gmail.com";
 
 
-        signupPage.doSignUp(newUserName, newUserEmail);
+        signupPage.doSignUp(newUserName, userEmail);
         Thread.sleep(3000);
 
 
@@ -69,7 +71,7 @@ public class CreateAccountTestRunner extends Setup {
         utils = new Utils();
         utils.randomData();
 
-        String password = "admin123";
+        String userPassword = "admin123";
         String firstName = utils.getFirstName();
         String lastName = utils.getLastName();
         String company = utils.getCompany();
@@ -81,7 +83,7 @@ public class CreateAccountTestRunner extends Setup {
         String mobileNumber = utils.getMobileNumber();
 
 
-        createAccountPage.createAccount(password, firstName, lastName, company, address1, address2, state, city, zipCode, mobileNumber);
+        createAccountPage.createAccount(userPassword, firstName, lastName, company, address1, address2, state, city, zipCode, mobileNumber);
         Thread.sleep(3000);
 
 
@@ -91,6 +93,10 @@ public class CreateAccountTestRunner extends Setup {
         Assert.assertTrue(actualAccountCreatedPage.contains(expectedAccountCreatedPage));
         Thread.sleep(1000);
 
+        Utils.waitForElement(driver, createAccountPage.accountCreatedSuccessfulAssertion, 50);
+        if (createAccountPage.accountCreatedSuccessfulAssertion.isDisplayed()) {
+            utils.saveJsonList(userEmail, userPassword);
+        }
 
         createAccountPage.btnContinue.click();
         Thread.sleep(1000);
@@ -102,10 +108,6 @@ public class CreateAccountTestRunner extends Setup {
         Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
 
 
-        Utils.waitForElement(driver, createAccountPage.accountCreatedSuccessfulAssertion, 50);
-        if (createAccountPage.accountCreatedSuccessfulAssertion.isDisplayed()) {
-            utils.saveJsonList(newUserEmail, password);
-
 
 //        createAccountPage.navDeleteAccount.click();
 
@@ -116,7 +118,7 @@ public class CreateAccountTestRunner extends Setup {
 //        Assert.assertTrue(actualAccountDeletedPage.contains(expectedAccountDeletedPage));
 
 
-        createAccountPage.btnContinue.click();
+//        createAccountPage.btnContinue.click();
 
 
 //        // After Account Deletion Home Page Assertion
@@ -131,25 +133,58 @@ public class CreateAccountTestRunner extends Setup {
         String actualAccountLogoutHomePage = createAccountPage.afterAccountLogoutHomePageAssertion.getText();
         String expectedAccountLogoutHomePage = "Signup / Login";
         Assert.assertTrue(actualAccountLogoutHomePage.contains(expectedAccountLogoutHomePage));
+        Thread.sleep(3000);
 
     }
 
-//    @Test(priority = 3)
-//    public void loginSuccessfulWithValidCredentials() {
-//
-//            loginPage = new LoginPage(driver);
-//            utils = new Utils();
-//
-//
-//            // Login/Signup Page Assertion
-//            String actualSignupPage = createAccountPage.newUserSignupAssertion.getText();
-//            String expectedSignupPage = "Login to your account";
-//            Assert.assertTrue(actualSignupPage.contains(expectedSignupPage));
-//
-//
-//            String userEmail = utils.getUserName();
-//            String newUserEmail = utils.getFirstName() + "@gmail.com";
-//
-//        }
+    @Test(priority = 3)
+    public void loginSuccessfulWithValidCredentials() throws IOException, ParseException, InterruptedException {
+
+        createAccountPage = new CreateAccountPage(driver);
+        loginPage = new LoginPage(driver);
+        utils = new Utils();
+
+
+        // Login/Signup Page Assertion
+        String actualSignupPage = loginPage.loginAssertion.getText();
+        String expectedSignupPage = "Login to your account";
+        Assert.assertTrue(actualSignupPage.contains(expectedSignupPage));
+
+        String file = "./src/test/resources/user.json";
+
+        List users = Utils.readJsondata(file);
+
+        JSONObject userObject = (JSONObject) users.get(users.size()-1);
+
+        String userEmail = (String) userObject.get("userEmail");
+        String userPassword = (String) userObject.get("userPassword");
+        Thread.sleep(1000);
+
+        loginPage.doLogin(userEmail,userPassword);
+
+        // After Account Creation Home Page Assertion
+        String actualAccountCreatedHomePage = createAccountPage.afterAccountCreationHomePageAssertion.getText();
+        String expectedAccountCreatedHomePage = "Logged in as";
+        Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
+
+        createAccountPage.navDeleteAccount.click();
+
+
+        // Account Deletion Successful Page Assertion
+        String actualAccountDeletedPage = createAccountPage.accountDeletedSuccessfulAssertion.getText();
+        String expectedAccountDeletedPage = "ACCOUNT DELETED!";
+        Assert.assertTrue(actualAccountDeletedPage.contains(expectedAccountDeletedPage));
+
+
+        createAccountPage.btnContinue.click();
+
+
+        // After Account Deletion Home Page Assertion
+        String actualAccountDeletedHomePage = createAccountPage.afterAccountDeletionHomePageAssertion.getText();
+        String expectedAccountDeletedHomePage = "Signup / Login";
+        Assert.assertTrue(actualAccountDeletedHomePage.contains(expectedAccountDeletedHomePage));
+
+    }
 
 }
+

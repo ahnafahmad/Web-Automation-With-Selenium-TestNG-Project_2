@@ -1,17 +1,1 @@
-[
-  {
-    "password": "Password@1234",
-    "employeeId": "4343",
-    "userName": "Rolanda1577"
-  },
-  {
-    "password": "Password@1234",
-    "employeeId": "5407",
-    "userName": "Sherryl9744"
-  },
-  {
-    "password": "Password@1234",
-    "employeeId": "5947",
-    "userName": "Rosalind8422"
-  }
-]
+[{"userPassword":"admin123","userEmail":"Vashti@gmail.com"},{"userPassword":"admin123","userEmail":"Iva@gmail.com"},{"userPassword":"admin123","userEmail":"Jan@gmail.com"},{"userPassword":"admin123","userEmail":"maryjane.greenfelder@gmail.com"},{"userPassword":"admin123","userEmail":"Refugio@gmail.com"}]
