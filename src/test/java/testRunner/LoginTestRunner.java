@@ -4,9 +4,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CreateAccountPage;
-import pages.LoginPage;
-import pages.SignupPage;
+import page.CreateAccountPage;
+import page.LoginPage;
+import page.SignupPage;
 import setup.Setup;
 import utils.Utils;
 

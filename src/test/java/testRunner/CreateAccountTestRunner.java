@@ -3,8 +3,8 @@ package testRunner;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CreateAccountPage;
-import pages.SignupPage;
+import page.CreateAccountPage;
+import page.SignupPage;
 import setup.Setup;
 import utils.Utils;
 
@@ -84,7 +84,7 @@ public class CreateAccountTestRunner extends Setup {
 
     }
 
-    @Test(priority = 3,description = "Enter All the Relevant Information after Signup Successfully")
+    @Test(priority = 3,description = "Enter All the Relevant Information after Signing up Successfully")
     public void enteredAccountInformationSuccessfully() throws InterruptedException, IOException, ParseException {
 
         createAccountPage = new CreateAccountPage(driver);
