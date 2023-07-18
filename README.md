@@ -10,11 +10,11 @@
 
 
  ## Project Scenarios
- - User can sign up to the System.
- - User can Enter all the neccessary Information 
- - User can Login to the System.
- - User can logout from the system
- - User can Delete the Account from the System.
+The user can sign up to the System.
+ - The user can Enter all the necessary information. 
+ - The user can Login to the System.
+ - The User can logout from the system
+ - The user can Delete the Account from the System.
    
 
  ## How to run this project:
@@ -25,7 +25,7 @@
  ```
  
   ## How to Generate an Allure Report: 
- Automated Automation Exercise website using Selenium and TestNG, where test cases are added for User Signup ,User Login, Account Delete by the User from the System.
+ Automated Automation Exercise website using Selenium and TestNG, where test cases are added for User Signup, User Login, Account Delete by the User from the System.
  Steps to generate the report:
  - Give the following commands by opening the terminal in the project folder to create the Allure Report:
 ```
