@@ -22,15 +22,13 @@ public class LoginTestRunner extends Setup {
     SignupPage signupPage;
 
 
-    @Test(priority = 1)
-    public void loginSuccessfulWithValidCredentials() throws IOException, ParseException, InterruptedException {
+    @Test(priority = 1, description = "Test Case 3: Login User with incorrect email and password")
+    public void loginUnsuccessfulWithInvalidCredentials() throws InterruptedException {
 
         driver.get("https://www.automationexercise.com");
 
-        createAccountPage = new CreateAccountPage(driver);
         loginPage = new LoginPage(driver);
         signupPage = new SignupPage(driver);
-        utils = new Utils();
 
         signupPage.navLogin.click();
 
@@ -38,6 +36,27 @@ public class LoginTestRunner extends Setup {
         String actualSignupPage = loginPage.loginAssertion.getText();
         String expectedSignupPage = "Login to your account";
         Assert.assertTrue(actualSignupPage.contains(expectedSignupPage));
+
+        String userEmail = "abc@gmail.com";
+        String userPassword = "12345";
+        Thread.sleep(1000);
+
+        loginPage.doLogin(userEmail,userPassword);
+
+        // Warning Error Message After Entering Invalid credentials Assertion
+        String actualAccountCreatedHomePage = loginPage.errorMessageAssertion.getText();
+        String expectedAccountCreatedHomePage = "Your email or password is incorrect!";
+        Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
+
+    }
+
+    @Test(priority = 2, description = "Test Case 2: Login User with correct email and password")
+    public void loginSuccessfulWithValidCredentials() throws IOException, ParseException, InterruptedException {
+
+        createAccountPage = new CreateAccountPage(driver);
+        loginPage = new LoginPage(driver);
+        signupPage = new SignupPage(driver);
+        utils = new Utils();
 
         String file = "./src/test/resources/user.json";
 
@@ -49,7 +68,9 @@ public class LoginTestRunner extends Setup {
         String userPassword = (String) userObject.get("userPassword");
         Thread.sleep(1000);
 
+
         loginPage.doLogin(userEmail,userPassword);
+        Thread.sleep(1000);
 
         // After Account Creation Home Page Assertion
         String actualAccountCreatedHomePage = createAccountPage.afterAccountCreationHomePageAssertion.getText();

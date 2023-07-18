@@ -23,13 +23,17 @@ public class SignupPage {
     @FindBy(css = "[data-qa = signup-button]")
     WebElement btnSubmit;
 
-
+    @FindBy(xpath = "//p[contains(text(),'Email Address already exist!')]")
+    public WebElement errorMessageAssertion;
 
     public SignupPage(WebDriver driver){
         PageFactory.initElements(driver,this);
     }
 
     public void doSignUp(String newUserName, String newUserEmail){
+
+        txtUserName.clear();
+        txtEmail.clear();
 
         txtUserName.sendKeys(newUserName);
         txtEmail.sendKeys(newUserEmail);

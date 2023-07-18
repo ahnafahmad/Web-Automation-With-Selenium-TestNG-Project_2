@@ -19,12 +19,17 @@ public class LoginPage {
     @FindBy(xpath = "//h2[contains(text(),'Login to your account')]")
     public WebElement loginAssertion;
 
+    @FindBy(xpath = "//p[contains(text(),'Your email or password is incorrect!')]")
+    public WebElement errorMessageAssertion;
+
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-
     public void doLogin(String userEmail, String userPassword){
+
+        txtEmail.clear();
+        txtPassword.clear();
 
         txtEmail.sendKeys(userEmail);
         txtPassword.sendKeys(userPassword);

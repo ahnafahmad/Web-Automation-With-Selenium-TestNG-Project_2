@@ -20,16 +20,14 @@ public class CreateAccountTestRunner extends Setup {
 
     String userEmail;
 
-    @Test(priority = 1)
-    public void signUpSuccessfully() throws InterruptedException {
+
+    @Test(priority = 1, description = "Test Case 5: Register User with existing email")
+    public void signUpUnsuccessfulWithExistingCredentials() throws InterruptedException {
 
         driver.get("https://www.automationexercise.com");
 
-        signupPage = new SignupPage(driver);
         createAccountPage = new CreateAccountPage(driver);
-        Utils utils = new Utils();
-        utils.randomData();
-
+        signupPage = new SignupPage(driver);
 
         //Home Page Assertion
         String actualHomePage = signupPage.homePageAssertion.getText();
@@ -47,6 +45,30 @@ public class CreateAccountTestRunner extends Setup {
         Assert.assertTrue(actualSignupPage.contains(expectedSignupPage));
 
 
+        String name = "Admin";
+        String userEmail = "admin1@gmail.com";
+
+        signupPage.doSignUp(name, userEmail);
+        Thread.sleep(3000);
+
+        // Warning Error Message After Entering Invalid credentials Assertion
+        String actualAccountCreatedHomePage = signupPage.errorMessageAssertion.getText();
+        String expectedAccountCreatedHomePage = "Email Address already exist!";
+        Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
+
+    }
+
+
+    @Test(priority = 2, description = "Test Case 1: Register User")
+    public void signUpSuccessfullyWithNewCredentials() throws InterruptedException {
+
+
+        signupPage = new SignupPage(driver);
+        createAccountPage = new CreateAccountPage(driver);
+        Utils utils = new Utils();
+        utils.randomData();
+
+
         String newUserName = utils.getUserName();
         userEmail = utils.getUserName() + "@gmail.com";
 
@@ -62,7 +84,7 @@ public class CreateAccountTestRunner extends Setup {
 
     }
 
-    @Test(priority = 2)
+    @Test(priority = 3,description = "Enter All the Relevant Information after Signup Successfully")
     public void enteredAccountInformationSuccessfully() throws InterruptedException, IOException, ParseException {
 
         createAccountPage = new CreateAccountPage(driver);
