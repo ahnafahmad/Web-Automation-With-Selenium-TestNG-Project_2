@@ -54,6 +54,7 @@ public class ContactUsPage {
         Thread.sleep(1000);
 
         uploadImage.sendKeys(imageUrl);
+        Thread.sleep(1000);
 
     }
 
