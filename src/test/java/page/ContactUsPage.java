@@ -10,7 +10,7 @@ public class ContactUsPage {
     @FindBy(xpath = "//a[contains(text(),'Contact us')]")
     public WebElement navContactUs;
 
-    @FindBy(xpath = "//a[contains(text(),'Get In Touch')]")
+    @FindBy(xpath = "//h2[contains(text(),'Get In Touch')]")
     public WebElement ContactUsPageAssertion;
 
     @FindBy(css = "[name = name]")
@@ -29,29 +29,31 @@ public class ContactUsPage {
     WebElement uploadImage;
 
     @FindBy(css = "[name = submit]")
-    WebElement btnSubmit;
+    public WebElement btnSubmit;
 
     @FindBy(xpath = "//div[contains(text(),'Success! Your details have been submitted successfully')]")
-    WebElement successMessageAssertion;
+    public WebElement successMessageAssertion;
 
-    @FindBy(xpath = "//div[contains(text(),'Home')]")
-    WebElement btnHome;
+    @FindBy(xpath = "//span[contains(text(),'Home')]")
+    public WebElement btnHome;
 
     @FindBy(xpath = "//div[@class='item active']//h2[contains(text(),'Full-Fledged')]")
-    WebElement homePageAssertion;
+    public WebElement homePageAssertion;
 
 
     public ContactUsPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 
-    public void contactUsFormSubmission(String name, String email, String subject, String message){
+    public void contactUsFormSubmission(String name, String email, String subject, String message,String imageUrl) throws InterruptedException {
 
         txtName.sendKeys(name);
         txtEmail.sendKeys(email);
         txtSubject.sendKeys(subject);
         txtMessage.sendKeys(message);
+        Thread.sleep(1000);
 
+        uploadImage.sendKeys(imageUrl);
 
     }
 

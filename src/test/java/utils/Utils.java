@@ -35,6 +35,7 @@ public class Utils {
     private String mobileNumber;
 
 
+
     public void randomData(){
 
         Faker faker = new Faker();
@@ -48,7 +49,6 @@ public class Utils {
         setCity(faker.address().city());
         setZipCode(faker.address().zipCode());
         setMobileNumber(faker.phoneNumber().cellPhone());
-
     }
 
     public void saveJsonList(String userEmail, String userPassword) throws IOException, ParseException {

@@ -65,7 +65,7 @@ public class CreateAccountTestRunner extends Setup {
 
         signupPage = new SignupPage(driver);
         createAccountPage = new CreateAccountPage(driver);
-        Utils utils = new Utils();
+        utils = new Utils();
         utils.randomData();
 
 
