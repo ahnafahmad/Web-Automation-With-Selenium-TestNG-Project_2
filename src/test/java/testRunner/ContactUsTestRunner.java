@@ -3,6 +3,7 @@ package testRunner;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.ContactUsPage;
+import page.SignupPage;
 import setup.Setup;
 import utils.Utils;
 
@@ -10,6 +11,7 @@ public class ContactUsTestRunner extends Setup {
 
     ContactUsPage contactUsPage;
     Utils utils;
+    SignupPage signupPage;
 
     @Test(priority = 1, description = "Test Case 6: Contact Us Form")
     public void submittedContactUsFormSuccessfully() throws InterruptedException {
@@ -19,6 +21,12 @@ public class ContactUsTestRunner extends Setup {
         contactUsPage = new ContactUsPage(driver);
         utils = new Utils();
         utils.randomData();
+        signupPage = new SignupPage(driver);
+
+        //Home Page Assertion
+        String actualHomePage = signupPage.homePageAssertion.getText();
+        String expectedHomePage = "Full-Fledged practice website for Automation Engineers";
+        Assert.assertTrue(actualHomePage.equals(expectedHomePage));
 
 
         contactUsPage.navContactUs.click();
@@ -57,10 +65,10 @@ public class ContactUsTestRunner extends Setup {
 
         contactUsPage.btnHome.click();
 
-        //After Clicking the Home Button Home Page Assertion
-        String actualHomePage = contactUsPage.homePageAssertion.getText();
-        String expectedHomePage = "Full-Fledged practice website for Automation Engineers";
+
+        //After Clicking the Home Button Home Page Assertion (After Line - 28)
         Assert.assertTrue(actualHomePage.equals(expectedHomePage));
+
     }
 
 }

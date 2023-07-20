@@ -37,8 +37,6 @@ public class ContactUsPage {
     @FindBy(xpath = "//span[contains(text(),'Home')]")
     public WebElement btnHome;
 
-    @FindBy(xpath = "//div[@class='item active']//h2[contains(text(),'Full-Fledged')]")
-    public WebElement homePageAssertion;
 
 
     public ContactUsPage(WebDriver driver) {
