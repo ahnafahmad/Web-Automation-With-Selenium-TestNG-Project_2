@@ -5,20 +5,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class VerifyTestCaseAndProductPage {
+public class VerifyDifferentUIPage {
 
     @FindBy(xpath = "//a[contains(text(),'Test Cases')]")
     public WebElement navTestCase;
 
     @FindBy(xpath = "//span[contains(text(),'Below is the list of test Cases for you to practice the Automation')]")
     public WebElement verifyTestCasePage;
-
-
-    @FindBy(xpath = "//a[contains(text(),'Products')]")
-    public WebElement navProduct;
-
-    @FindBy(xpath = "//h2[contains(text(),'All Products')]")
-    public WebElement verifyProductPage;
 
     @FindBy(xpath = "//a[contains(text(),'Add to cart')]")
     public WebElement verifyProductList;
@@ -45,7 +38,7 @@ public class VerifyTestCaseAndProductPage {
 
 
 
-    public VerifyTestCaseAndProductPage(WebDriver driver) {
+    public VerifyDifferentUIPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
 

@@ -2,14 +2,17 @@ package testRunner;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import page.ProductPage;
 import page.SignupPage;
-import page.VerifyTestCaseAndProductPage;
+import page.VerifyDifferentUIPage;
 import setup.Setup;
 
-public class VerifyTestCaseAndProductPageTestRunner extends Setup {
+public class VerifyDifferentUITestRunner extends Setup {
 
     SignupPage signupPage;
-    VerifyTestCaseAndProductPage verifyTestCaseAndProductPage;
+    VerifyDifferentUIPage verifyTestCaseAndProductPage;
+
+    ProductPage productPage;
 
     @Test(priority = 1, description = "Test Case 7: Verify Test Cases Page")
     public void verifyTestCasePageSuccessfully() throws InterruptedException {
@@ -17,7 +20,7 @@ public class VerifyTestCaseAndProductPageTestRunner extends Setup {
         driver.get("https://www.automationexercise.com");
 
         signupPage = new SignupPage(driver);
-        verifyTestCaseAndProductPage = new VerifyTestCaseAndProductPage(driver);
+        verifyTestCaseAndProductPage = new VerifyDifferentUIPage(driver);
 
         //Home Page Assertion
         String actualHomePage = signupPage.homePageAssertion.getText();
@@ -41,14 +44,15 @@ public class VerifyTestCaseAndProductPageTestRunner extends Setup {
     public void verifyProductPageSuccessfully() {
 
         signupPage = new SignupPage(driver);
-        verifyTestCaseAndProductPage = new VerifyTestCaseAndProductPage(driver);
+        verifyTestCaseAndProductPage = new VerifyDifferentUIPage(driver);
+        productPage = new ProductPage(driver);
 
 
-        verifyTestCaseAndProductPage.navProduct.click();
+        productPage.navProduct.click();
 
 
         //Product Page Assertion
-        String actualProductPage = verifyTestCaseAndProductPage.verifyProductPage.getText();
+        String actualProductPage = productPage.productPageAssertion.getText();
         String expectedProductPage = "ALL PRODUCTS";
         Assert.assertTrue(actualProductPage.equals(expectedProductPage));
 
