@@ -20,7 +20,7 @@ public class ProductPage {
     public WebElement btnSearch;
 
     @FindBy(xpath = "//h2[contains(text(),'Searched Products')]")
-    public WebElement SearchProductPageAssertion;
+    public WebElement searchProductPageAssertion;
 
     @FindBy(xpath = "//p[contains(text(),'Cotton Silk Hand Block Print Saree')]")
     public WebElement verifySearchedProductVisible;

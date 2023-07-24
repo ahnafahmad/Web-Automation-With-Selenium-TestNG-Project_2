@@ -37,9 +37,8 @@ public class VerifyDifferentUIPage {
     public WebElement productBrand;
 
 
-
     public VerifyDifferentUIPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(driver,this);
     }
 
 }

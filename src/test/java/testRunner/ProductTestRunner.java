@@ -43,7 +43,7 @@ public class ProductTestRunner extends Setup {
 
 
         //Search Page Assertion
-        String actualSearchPage = productPage.SearchProductPageAssertion.getText();
+        String actualSearchPage = productPage.searchProductPageAssertion.getText();
         String expectedSearchPage = "SEARCHED PRODUCTS";
         Assert.assertTrue(actualSearchPage.equals(expectedSearchPage));
 
@@ -52,14 +52,6 @@ public class ProductTestRunner extends Setup {
         String actualSearchProduct = productPage.verifySearchedProductVisible.getText();
         String expectedSearchProduct = "Cotton Silk Hand Block Print Saree";
         Assert.assertTrue(actualSearchProduct.equals(expectedSearchProduct));
-
-
-
-
-
-
-
-
 
 
     }
