@@ -49,7 +49,7 @@ public class SubscriptionTestRunner extends Setup {
     }
 
     @Test(priority = 2, description = "Test Case 11: Verify Subscription in Cart page")
-    public void verifySubscriptionInCartpageSuccessfully() throws InterruptedException {
+    public void verifySubscriptionInCartPageSuccessfully() throws InterruptedException {
 
         subscriptionPage = new SubscriptionPage(driver);
 
