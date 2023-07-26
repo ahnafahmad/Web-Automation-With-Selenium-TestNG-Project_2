@@ -5,15 +5,17 @@ import org.testng.annotations.Test;
 import page.ProductPage;
 import page.SignupPage;
 import page.SubscriptionPage;
+import page.VerifyDifferentUIPage;
 import setup.Setup;
+import utils.Utils;
 
 public class ProductTestRunner extends Setup {
 
 
     SignupPage signupPage;
     ProductPage productPage;
-
     SubscriptionPage subscriptionPage;
+    VerifyDifferentUIPage verifyDifferentUIPage;
 
     @Test(priority = 1, description = "Test Case 9: Search Product")
     public void searchProductsSuccessfully() {
@@ -60,7 +62,7 @@ public class ProductTestRunner extends Setup {
     }
 
     @Test(priority = 2, description = "Test Case 12: Add Products in Cart")
-    public void addProductsInCart() throws InterruptedException {
+    public void addSingleQuantityProductsInCart() throws InterruptedException {
 
         productPage = new ProductPage(driver);
 
@@ -69,8 +71,8 @@ public class ProductTestRunner extends Setup {
 
         //Add 1st Product to the Cart
 
-        productPage.btnAddToCart.get(0).click();
-        Thread.sleep(3000);
+        productPage.addToCart.get(0).click();
+        Thread.sleep(1000);
 
 
         // Product Add To Cart Successfully
@@ -79,13 +81,13 @@ public class ProductTestRunner extends Setup {
         Assert.assertTrue(actualAddToCartProduct1.equals(expectedAddToCartProduct1));
 
         productPage.btnContinueShopping.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
 
         //Add 2nd Product to the Cart
 
-        productPage.btnAddToCart.get(4).click();
-        Thread.sleep(3000);
+        productPage.addToCart.get(4).click();
+        Thread.sleep(1000);
 
 
         // Product Add To Cart Successfully
@@ -94,7 +96,7 @@ public class ProductTestRunner extends Setup {
         Assert.assertTrue(actualAddToCartProduct2.equals(expectedAddToCartProduct2));
 
         productPage.btnViewCart.click();
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
 
         //Cart Page Assertion
@@ -148,6 +150,119 @@ public class ProductTestRunner extends Setup {
         String expectedProductTotalPrice2 = "Rs. 5000";
         Assert.assertTrue(actualProductTotalPrice2.equals(expectedProductTotalPrice2));
 
+    }
+
+
+    @Test(priority = 3, description = "Test Case 13: Verify Product quantity in Cart")
+    public void addMultipleQuantityProductsInCart() throws InterruptedException {
+
+        productPage = new ProductPage(driver);
+        subscriptionPage = new SubscriptionPage(driver);
+        verifyDifferentUIPage = new VerifyDifferentUIPage(driver);
+
+
+        for(int i = 0; i<2; i++) {
+            productPage.deleteProducts.get(0).click();
+            Thread.sleep(1000);
+        }
+
+        productPage.buyProductWhenCartIsEmpty.click();
+
+
+        Utils.waitForElement(driver, productPage.productPageAssertion, 50);
+        if (productPage.productPageAssertion.isDisplayed()) {
+            productPage.btnViewProduct.get(0).click();
+            Thread.sleep(1000);
+        }
+
+        //Add Multiple Quantity Product to the Cart
+
+
+
+
+        //Product Name Visibility Assertion
+        String actualProductName = verifyDifferentUIPage.productName.getText();
+        String expectedProductName = "Blue Top";
+        Assert.assertTrue(actualProductName.equals(expectedProductName));
+
+
+        //Product Category Visibility Assertion
+        String actualProductCategory = verifyDifferentUIPage.productCategory.getText();
+        String expectedProductCategory = "Category: Women > Tops";
+        Assert.assertTrue(actualProductCategory.equals(expectedProductCategory));
+
+
+        //Product Price Visibility Assertion
+        String actualProductPriceInView = verifyDifferentUIPage.productPrice.getText();
+        String expectedProductPriceInView = "Rs. 500";
+        Assert.assertTrue(actualProductPriceInView.equals(expectedProductPriceInView));
+
+
+        //Product Availability Visibility Assertion
+        String actualProductAvailability = verifyDifferentUIPage.productAvailability.getText();
+        String expectedProductAvailability = "Availability:";
+        Assert.assertTrue(actualProductAvailability.equals(expectedProductAvailability));
+
+
+        //Product Condition Visibility Assertion
+        String actualProductCondition = verifyDifferentUIPage.productCondition.getText();
+        String expectedProductCondition = "Condition:";
+        Assert.assertTrue(actualProductCondition.equals(expectedProductCondition));
+
+
+        //Product Brand Visibility Assertion
+        String actualProductBrand = verifyDifferentUIPage.productBrand.getText();
+        String expectedProductBrand = "Brand:";
+        Assert.assertTrue(actualProductBrand.equals(expectedProductBrand));
+
+
+        productPage.productQuantity.clear();
+        productPage.productQuantity.sendKeys("4");
+
+        productPage.btnAddToCart.click();
+        Thread.sleep(2000);
+
+
+        // Product Add To Cart Successfully
+        String actualAddToCartProduct = productPage.successfullyAddToCartAssertion.getText();
+        String expectedAddToCartProduct = "Your product has been added to cart.";
+        Assert.assertTrue(actualAddToCartProduct.equals(expectedAddToCartProduct));
+
+
+        productPage.btnViewCart.click();
+        Thread.sleep(1000);
+
+
+        //Cart Page Assertion
+        String actualCartPage = subscriptionPage.cartPageAssertion.getText();
+        String expectedCartPage = "Shopping Cart";
+        Assert.assertTrue(actualCartPage.equals(expectedCartPage));
+
+
+
+
+
+        //Product Added Successfully Assertion
+
+        //Product Description Assertion
+        String actualProductDescription = productPage.verifySingleProductDescription.getText();
+        String expectedProductDescription = "Blue Top";
+        Assert.assertTrue(actualProductDescription.equals(expectedProductDescription));
+
+        //1st Product Price Assertion
+        String actualProductPrice = productPage.verifyProductPrice.get(0).getText();
+        String expectedProductPrice = "Rs. 500";
+        Assert.assertTrue(actualProductPrice.equals(expectedProductPrice));
+
+        //1st Product Quantity Assertion
+        String actualProductQuantity = productPage.verifyProductQuantity.get(0).getText();
+        String expectedProductQuantity = "4";
+        Assert.assertTrue(actualProductQuantity.equals(expectedProductQuantity));
+
+        //1st Product total Price Assertion
+        String actualProductTotalPrice = productPage.verifyProductTotalPrice.get(0).getText();
+        String expectedProductTotalPrice = "Rs. 2000";
+        Assert.assertTrue(actualProductTotalPrice.equals(expectedProductTotalPrice));
     }
 
 }

@@ -28,7 +28,7 @@ public class ProductPage {
     public List<WebElement> verifySearchedProductVisible;
 
     @FindBy(xpath = "//a[contains(text(),'Add to cart')]")
-    public List<WebElement> btnAddToCart;
+    public List<WebElement> addToCart;
 
     @FindBy(xpath = "//p[contains(text(),'Your product has been added to cart')]")
     public WebElement successfullyAddToCartAssertion;
@@ -46,6 +46,9 @@ public class ProductPage {
     @FindBy(xpath = "//a[contains(text(),'Beautiful Peacock Blue Cotton Linen Saree')]")
     public WebElement verifyProductDescription2;
 
+    @FindBy(xpath = "//a[contains(text(),'Blue Top')]")
+    public WebElement verifySingleProductDescription;
+
     @FindBy(className = "cart_price")
     public List<WebElement> verifyProductPrice;
 
@@ -54,6 +57,23 @@ public class ProductPage {
 
     @FindBy(className = "cart_total")
     public List<WebElement> verifyProductTotalPrice;
+
+    @FindBy(className = "cart_quantity_delete")
+    public List<WebElement> deleteProducts;
+
+    @FindBy(xpath = "//u[contains(text(),'here')]")
+    public WebElement buyProductWhenCartIsEmpty;
+
+    @FindBy(xpath = "//a[contains(text(),'View Product')]")
+    public List<WebElement> btnViewProduct;
+
+    @FindBy(id = "quantity")
+    public WebElement productQuantity;
+
+    @FindBy(css = "[type = button]")
+    public WebElement btnAddToCart;
+
+
 
 
     public ProductPage(WebDriver driver) {

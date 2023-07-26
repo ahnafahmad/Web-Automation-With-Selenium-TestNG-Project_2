@@ -10,7 +10,7 @@ import setup.Setup;
 public class VerifyDifferentUITestRunner extends Setup {
 
     SignupPage signupPage;
-    VerifyDifferentUIPage verifyTestCaseAndProductPage;
+    VerifyDifferentUIPage verifyDifferentUIPage;
 
     ProductPage productPage;
 
@@ -20,7 +20,7 @@ public class VerifyDifferentUITestRunner extends Setup {
         driver.get("https://www.automationexercise.com");
 
         signupPage = new SignupPage(driver);
-        verifyTestCaseAndProductPage = new VerifyDifferentUIPage(driver);
+        verifyDifferentUIPage = new VerifyDifferentUIPage(driver);
 
         //Home Page Assertion
         String actualHomePage = signupPage.homePageAssertion.getText();
@@ -28,12 +28,12 @@ public class VerifyDifferentUITestRunner extends Setup {
         Assert.assertTrue(actualHomePage.equals(expectedHomePage));
 
 
-        verifyTestCaseAndProductPage.navTestCase.click();
+        verifyDifferentUIPage.navTestCase.click();
         Thread.sleep(3000);
 
 
         //Verify Test Case Page Assertion
-        String actualTestCasePage = verifyTestCaseAndProductPage.verifyTestCasePage.getText();
+        String actualTestCasePage = verifyDifferentUIPage.verifyTestCasePage.getText();
         String expectedTestCasePage = "Below is the list of test Cases for you to practice the Automation. Click on the scenario for detailed Test Steps:";
         Assert.assertTrue(actualTestCasePage.equals(expectedTestCasePage));
 
@@ -44,7 +44,7 @@ public class VerifyDifferentUITestRunner extends Setup {
     public void verifyProductPageSuccessfully() {
 
         signupPage = new SignupPage(driver);
-        verifyTestCaseAndProductPage = new VerifyDifferentUIPage(driver);
+        verifyDifferentUIPage = new VerifyDifferentUIPage(driver);
         productPage = new ProductPage(driver);
 
 
@@ -58,46 +58,46 @@ public class VerifyDifferentUITestRunner extends Setup {
 
 
         //Product List Visibility Assertion
-        String actualProductList = verifyTestCaseAndProductPage.verifyProductList.getText();
+        String actualProductList = verifyDifferentUIPage.verifyProductList.getText();
         String expectedProductList = "Add to cart";
         Assert.assertTrue(actualProductList.equals(expectedProductList));
 
 
-        verifyTestCaseAndProductPage.viewProduct.click();
+        verifyDifferentUIPage.viewProduct.click();
 
 
         //Product Name Visibility Assertion
-        String actualProductName = verifyTestCaseAndProductPage.productName.getText();
+        String actualProductName = verifyDifferentUIPage.productName.getText();
         String expectedProductName = "Blue Top";
         Assert.assertTrue(actualProductName.equals(expectedProductName));
 
 
         //Product Category Visibility Assertion
-        String actualProductCategory = verifyTestCaseAndProductPage.productCategory.getText();
+        String actualProductCategory = verifyDifferentUIPage.productCategory.getText();
         String expectedProductCategory = "Category: Women > Tops";
         Assert.assertTrue(actualProductCategory.equals(expectedProductCategory));
 
 
         //Product Price Visibility Assertion
-        String actualProductPrice = verifyTestCaseAndProductPage.productPrice.getText();
+        String actualProductPrice = verifyDifferentUIPage.productPrice.getText();
         String expectedProductPrice = "Rs. 500";
         Assert.assertTrue(actualProductPrice.equals(expectedProductPrice));
 
 
         //Product Availability Visibility Assertion
-        String actualProductAvailability = verifyTestCaseAndProductPage.productAvailability.getText();
+        String actualProductAvailability = verifyDifferentUIPage.productAvailability.getText();
         String expectedProductAvailability = "Availability:";
         Assert.assertTrue(actualProductAvailability.equals(expectedProductAvailability));
 
 
         //Product Condition Visibility Assertion
-        String actualProductCondition = verifyTestCaseAndProductPage.productCondition.getText();
+        String actualProductCondition = verifyDifferentUIPage.productCondition.getText();
         String expectedProductCondition = "Condition:";
         Assert.assertTrue(actualProductCondition.equals(expectedProductCondition));
 
 
         //Product Brand Visibility Assertion
-        String actualProductBrand = verifyTestCaseAndProductPage.productBrand.getText();
+        String actualProductBrand = verifyDifferentUIPage.productBrand.getText();
         String expectedProductBrand = "Brand:";
         Assert.assertTrue(actualProductBrand.equals(expectedProductBrand));
 
