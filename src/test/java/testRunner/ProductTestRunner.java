@@ -1,36 +1,70 @@
 package testRunner;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import page.ProductPage;
-import page.SignupPage;
-import page.SubscriptionPage;
-import page.VerifyDifferentUIPage;
+import page.*;
 import setup.Setup;
 import utils.Utils;
+
+import java.io.IOException;
+import java.util.List;
 
 public class ProductTestRunner extends Setup {
 
 
     SignupPage signupPage;
+    LoginPage loginPage;
+    CreateAccountPage createAccountPage;
     ProductPage productPage;
     SubscriptionPage subscriptionPage;
     VerifyDifferentUIPage verifyDifferentUIPage;
 
-    @Test(priority = 1, description = "Test Case 9: Search Product")
-    public void searchProductsSuccessfully() {
+
+    @Test(priority = 1, description = "Test Case 2: Login User with correct email and password")
+    public void loginSuccessfulWithValidCredentials() throws IOException, ParseException, InterruptedException {
 
         driver.get("https://www.automationexercise.com");
 
+        createAccountPage = new CreateAccountPage(driver);
+        loginPage = new LoginPage(driver);
         signupPage = new SignupPage(driver);
-
-        productPage = new ProductPage(driver);
 
 
         //Home Page Assertion
         String actualHomePage = signupPage.homePageAssertion.getText();
         String expectedHomePage = "Full-Fledged practice website for Automation Engineers";
         Assert.assertTrue(actualHomePage.equals(expectedHomePage));
+
+
+        signupPage.navLogin.click();
+
+
+        String userEmail = "admin4@gmail.com";
+        String userPassword = "admin123";
+        Thread.sleep(1000);
+
+
+        loginPage.doLogin(userEmail,userPassword);
+        Thread.sleep(1000);
+
+
+        // After Account Creation Home Page Assertion
+        String actualAccountCreatedHomePage = createAccountPage.afterAccountCreationHomePageAssertion.getText();
+        String expectedAccountCreatedHomePage = "Logged in as";
+        Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
+
+    }
+
+
+
+    @Test(priority = 2, description = "Test Case 9: Search Product")
+    public void searchProductsSuccessfully() {
+
+        signupPage = new SignupPage(driver);
+
+        productPage = new ProductPage(driver);
 
 
         productPage.navProduct.click();
@@ -61,7 +95,7 @@ public class ProductTestRunner extends Setup {
 
     }
 
-    @Test(priority = 2, description = "Test Case 12: Add Products in Cart")
+    @Test(priority = 3, description = "Test Case 12: Add Products in Cart")
     public void addSingleQuantityProductsInCart() throws InterruptedException {
 
         productPage = new ProductPage(driver);
@@ -153,7 +187,7 @@ public class ProductTestRunner extends Setup {
     }
 
 
-    @Test(priority = 3, description = "Test Case 13: Verify Product quantity in Cart")
+    @Test(priority = 4, description = "Test Case 13: Verify Product quantity in Cart")
     public void addMultipleQuantityProductsInCart() throws InterruptedException {
 
         productPage = new ProductPage(driver);
@@ -169,14 +203,15 @@ public class ProductTestRunner extends Setup {
         productPage.buyProductWhenCartIsEmpty.click();
 
 
+
+
+        //Add Multiple Quantity Product to the Cart
+
         Utils.waitForElement(driver, productPage.productPageAssertion, 50);
         if (productPage.productPageAssertion.isDisplayed()) {
             productPage.btnViewProduct.get(0).click();
             Thread.sleep(1000);
         }
-
-        //Add Multiple Quantity Product to the Cart
-
 
 
 
@@ -263,6 +298,13 @@ public class ProductTestRunner extends Setup {
         String actualProductTotalPrice = productPage.verifyProductTotalPrice.get(0).getText();
         String expectedProductTotalPrice = "Rs. 2000";
         Assert.assertTrue(actualProductTotalPrice.equals(expectedProductTotalPrice));
+    }
+
+    @Test(priority = 5, description = "Test Case 14: Place Order: Register while Checkout")
+    public void  placeOrderSuccessfully(){
+
+
+
     }
 
 }

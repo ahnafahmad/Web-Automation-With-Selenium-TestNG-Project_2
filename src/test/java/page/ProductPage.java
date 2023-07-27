@@ -73,13 +73,22 @@ public class ProductPage {
     @FindBy(css = "[type = button]")
     public WebElement btnAddToCart;
 
+    @FindBy(className = "check_out")
+    public WebElement proceedToCheckout;
+
+    @FindBy(className = "heading")
+    public List<WebElement> headerTitle;
+
+    @FindBy(css = "[name = message]")
+    public WebElement commentBox;
+
+    @FindBy(xpath = "//a[contains(text(),'Place Order')]")
+    public WebElement placeOrder;
 
 
 
     public ProductPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
-
-
 
 }
