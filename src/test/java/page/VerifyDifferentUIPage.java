@@ -19,7 +19,7 @@ public class VerifyDifferentUIPage {
     @FindBy(xpath = "//a[contains(text(),'View Product')]")
     public WebElement viewProduct;
 
-    @FindBy(xpath = "//h2[contains(text(),'Blue Top')]")
+    @FindBy(xpath = "//h2[contains(text(),'Straight')]")
     public WebElement productName;
 
     @FindBy(xpath = "//p[contains(text(),'Category')]")

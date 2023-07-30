@@ -46,7 +46,7 @@ public class ProductPage {
     @FindBy(xpath = "//a[contains(text(),'Beautiful Peacock Blue Cotton Linen Saree')]")
     public WebElement verifyProductDescription2;
 
-    @FindBy(xpath = "//a[contains(text(),'Blue Top')]")
+    @FindBy(xpath = "//a[contains(text(),'Regular Fit Straight Jeans')]")
     public WebElement verifySingleProductDescription;
 
     @FindBy(className = "cart_price")
@@ -63,6 +63,23 @@ public class ProductPage {
 
     @FindBy(xpath = "//u[contains(text(),'here')]")
     public WebElement buyProductWhenCartIsEmpty;
+
+
+    @FindBy(xpath = "//a[normalize-space()='Women']")
+    public WebElement category1;
+
+    @FindBy(xpath = "//a[contains(text(),'Dress')]")
+    public List<WebElement> subCategory1;
+
+    @FindBy(className = "title")
+    public WebElement categoryAssertion;
+
+    @FindBy(xpath = "//a[normalize-space()='Men']")
+    public WebElement category2;
+
+    @FindBy(xpath = "//a[contains(text(),'Jeans')]")
+    public WebElement subCategory2;
+
 
     @FindBy(xpath = "//a[contains(text(),'View Product')]")
     public List<WebElement> btnViewProduct;

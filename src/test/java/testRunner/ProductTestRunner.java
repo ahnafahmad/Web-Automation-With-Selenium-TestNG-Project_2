@@ -184,16 +184,6 @@ public class ProductTestRunner extends Setup {
         String expectedProductTotalPrice2 = "Rs. 5000";
         Assert.assertTrue(actualProductTotalPrice2.equals(expectedProductTotalPrice2));
 
-    }
-
-
-    @Test(priority = 4, description = "Test Case 13: Verify Product quantity in Cart")
-    public void addMultipleQuantityProductsInCart() throws InterruptedException {
-
-        productPage = new ProductPage(driver);
-        subscriptionPage = new SubscriptionPage(driver);
-        verifyDifferentUIPage = new VerifyDifferentUIPage(driver);
-
 
         for(int i = 0; i<2; i++) {
             productPage.deleteProducts.get(0).click();
@@ -201,34 +191,76 @@ public class ProductTestRunner extends Setup {
         }
 
         productPage.buyProductWhenCartIsEmpty.click();
+        Thread.sleep(3000);
+
+
+    }
+
+    @Test(priority = 4, description = "Test Case 18: View Category Products")
+    public void viewCategoryProducts() throws InterruptedException {
+
+        productPage = new ProductPage(driver);
+
+
+        Utils.waitForElement(driver, productPage.productPageAssertion, 50);
+        if (productPage.productPageAssertion.isDisplayed()) {
+
+            productPage.category1.click();
+            Thread.sleep(1000);
+            productPage.subCategory1.get(0).click();
+        }
+
+
+        //Woman Category Dress Sub-Category Assertion in
+        String actualDressAssertion = productPage.categoryAssertion.getText();
+        String expectedDressAssertion = "WOMEN - DRESS PRODUCTS";
+        Assert.assertTrue(actualDressAssertion.equals(expectedDressAssertion));
+
+
+        productPage.category2.click();
+        Thread.sleep(1000);
+        productPage.subCategory2.click();
+
+
+        //Man Category Jeans Sub-Category Assertion in
+        String actualJeansAssertion = productPage.categoryAssertion.getText();
+        String expectedJeansAssertion = "MEN - JEANS PRODUCTS";
+        Assert.assertTrue(actualJeansAssertion.equals(expectedJeansAssertion));
+
+    }
+
+
+    @Test(priority = 5, description = "Test Case 13: Verify Product quantity in Cart")
+    public void addMultipleQuantityProductsInCart() throws InterruptedException {
+
+        productPage = new ProductPage(driver);
+        subscriptionPage = new SubscriptionPage(driver);
+        verifyDifferentUIPage = new VerifyDifferentUIPage(driver);
+
 
 
 
         //Add Multiple Quantity Product to the Cart
 
-        Utils.waitForElement(driver, productPage.productPageAssertion, 50);
-        if (productPage.productPageAssertion.isDisplayed()) {
-            productPage.btnViewProduct.get(0).click();
-            Thread.sleep(1000);
-        }
-
+        productPage.btnViewProduct.get(1).click();
+        Thread.sleep(1000);
 
 
         //Product Name Visibility Assertion
         String actualProductName = verifyDifferentUIPage.productName.getText();
-        String expectedProductName = "Blue Top";
+        String expectedProductName = "Regular Fit Straight Jeans";
         Assert.assertTrue(actualProductName.equals(expectedProductName));
 
 
         //Product Category Visibility Assertion
         String actualProductCategory = verifyDifferentUIPage.productCategory.getText();
-        String expectedProductCategory = "Category: Women > Tops";
+        String expectedProductCategory = "Category: Men > Jeans";
         Assert.assertTrue(actualProductCategory.equals(expectedProductCategory));
 
 
         //Product Price Visibility Assertion
         String actualProductPriceInView = verifyDifferentUIPage.productPrice.getText();
-        String expectedProductPriceInView = "Rs. 500";
+        String expectedProductPriceInView = "Rs. 1200";
         Assert.assertTrue(actualProductPriceInView.equals(expectedProductPriceInView));
 
 
@@ -280,12 +312,12 @@ public class ProductTestRunner extends Setup {
 
         //Product Description Assertion
         String actualProductDescription = productPage.verifySingleProductDescription.getText();
-        String expectedProductDescription = "Blue Top";
+        String expectedProductDescription = "Regular Fit Straight Jeans";
         Assert.assertTrue(actualProductDescription.equals(expectedProductDescription));
 
         //1st Product Price Assertion
         String actualProductPrice = productPage.verifyProductPrice.get(0).getText();
-        String expectedProductPrice = "Rs. 500";
+        String expectedProductPrice = "Rs. 1200";
         Assert.assertTrue(actualProductPrice.equals(expectedProductPrice));
 
         //1st Product Quantity Assertion
@@ -295,17 +327,16 @@ public class ProductTestRunner extends Setup {
 
         //1st Product total Price Assertion
         String actualProductTotalPrice = productPage.verifyProductTotalPriceInProductDetailsPage.get(0).getText();
-        String expectedProductTotalPrice = "Rs. 2000";
+        String expectedProductTotalPrice = "Rs. 4800";
         Assert.assertTrue(actualProductTotalPrice.equals(expectedProductTotalPrice));
     }
 
-    @Test(priority = 5, description = "Test Case 14: Place Order: Register while Checkout")
+    @Test(priority = 6, description = "Test Case 16: Place Order: Register while Checkout")
     public void  placeOrderSuccessfully() throws InterruptedException {
 
         productPage = new ProductPage(driver);
 
         productPage.proceedToCheckout.click();
-
 
 
         //Checkout Page Assertion
@@ -322,7 +353,7 @@ public class ProductTestRunner extends Setup {
 
         //Total Price Assertion
         String actualTotalPrice = productPage.verifyProductTotalPriceInCheckoutPage.get(1).getText();
-        String expectedTotalPrice = "Rs. 2000";
+        String expectedTotalPrice = "Rs. 4800";
         Assert.assertTrue(actualTotalPrice.equals(expectedTotalPrice));
 
 
