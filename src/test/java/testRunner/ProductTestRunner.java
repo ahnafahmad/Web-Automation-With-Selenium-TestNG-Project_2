@@ -106,7 +106,7 @@ public class ProductTestRunner extends Setup {
         //Add 1st Product to the Cart
 
         productPage.addToCart.get(0).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
 
         // Product Add To Cart Successfully
@@ -115,13 +115,13 @@ public class ProductTestRunner extends Setup {
         Assert.assertTrue(actualAddToCartProduct1.equals(expectedAddToCartProduct1));
 
         productPage.btnContinueShopping.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
 
         //Add 2nd Product to the Cart
 
         productPage.addToCart.get(4).click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
 
         // Product Add To Cart Successfully
@@ -130,7 +130,7 @@ public class ProductTestRunner extends Setup {
         Assert.assertTrue(actualAddToCartProduct2.equals(expectedAddToCartProduct2));
 
         productPage.btnViewCart.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
 
         //Cart Page Assertion
@@ -157,7 +157,7 @@ public class ProductTestRunner extends Setup {
         Assert.assertTrue(actualProductQuantity1.equals(expectedProductQuantity1));
 
         //1st Product total Price Assertion
-        String actualProductTotalPrice1 = productPage.verifyProductTotalPrice.get(0).getText();
+        String actualProductTotalPrice1 = productPage.verifyProductTotalPriceInProductDetailsPage.get(0).getText();
         String expectedProductTotalPrice1 = "Rs. 3000";
         Assert.assertTrue(actualProductTotalPrice1.equals(expectedProductTotalPrice1));
 
@@ -180,7 +180,7 @@ public class ProductTestRunner extends Setup {
         Assert.assertTrue(actualProductQuantity2.equals(expectedProductQuantity2));
 
         //2nd Product total Price Assertion
-        String actualProductTotalPrice2 = productPage.verifyProductTotalPrice.get(1).getText();
+        String actualProductTotalPrice2 = productPage.verifyProductTotalPriceInProductDetailsPage.get(1).getText();
         String expectedProductTotalPrice2 = "Rs. 5000";
         Assert.assertTrue(actualProductTotalPrice2.equals(expectedProductTotalPrice2));
 
@@ -197,11 +197,10 @@ public class ProductTestRunner extends Setup {
 
         for(int i = 0; i<2; i++) {
             productPage.deleteProducts.get(0).click();
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         }
 
         productPage.buyProductWhenCartIsEmpty.click();
-
 
 
 
@@ -295,14 +294,68 @@ public class ProductTestRunner extends Setup {
         Assert.assertTrue(actualProductQuantity.equals(expectedProductQuantity));
 
         //1st Product total Price Assertion
-        String actualProductTotalPrice = productPage.verifyProductTotalPrice.get(0).getText();
+        String actualProductTotalPrice = productPage.verifyProductTotalPriceInProductDetailsPage.get(0).getText();
         String expectedProductTotalPrice = "Rs. 2000";
         Assert.assertTrue(actualProductTotalPrice.equals(expectedProductTotalPrice));
     }
 
     @Test(priority = 5, description = "Test Case 14: Place Order: Register while Checkout")
-    public void  placeOrderSuccessfully(){
+    public void  placeOrderSuccessfully() throws InterruptedException {
 
+        productPage = new ProductPage(driver);
+
+        productPage.proceedToCheckout.click();
+
+
+
+        //Checkout Page Assertion
+
+        // Address Details
+        String actualAddressDetails = productPage.headerTitle.get(0).getText();
+        String expectedAddressDetails = "Address Details";
+        Assert.assertTrue(actualAddressDetails.equals(expectedAddressDetails));
+
+        //Review Your Order
+        String actualReviewYourOrder = productPage.headerTitle.get(1).getText();
+        String expectedReviewYourOrder = "Review Your Order";
+        Assert.assertTrue(actualReviewYourOrder.equals(expectedReviewYourOrder));
+
+        //Total Price Assertion
+        String actualTotalPrice = productPage.verifyProductTotalPriceInCheckoutPage.get(1).getText();
+        String expectedTotalPrice = "Rs. 2000";
+        Assert.assertTrue(actualTotalPrice.equals(expectedTotalPrice));
+
+
+        productPage.commentBox.sendKeys("Please Send Me the order in the Below given Address.");
+
+        productPage.btnPlaceOrder.click();
+
+        String cardName= "Admin";
+        String cardNumber = "56765436523467523";
+        String cardCvc = "689";
+        String expiryMonth  = "09";
+        String expiryYear = "2027";
+
+        productPage.givingCardInformationForPayment(cardName, cardNumber, cardCvc, expiryMonth, expiryYear);
+        Thread.sleep(3000);
+
+
+
+        //Place Order Assertion
+        String actualOrderPlace = productPage.placeOrderSuccessfullyAssertion.getText();
+        String expectedOrderPlace = "Congratulations! Your order has been confirmed!";
+        Assert.assertTrue(actualOrderPlace.equals(expectedOrderPlace));
+
+
+        productPage.btnDownloadInvoice.click();
+
+        productPage.btnContinue.click();
+
+
+        //Home Page Assertion After Placing a Order Successfully
+        String actualHomePage = signupPage.homePageAssertion.getText();
+        String expectedHomePage = "Full-Fledged practice website for Automation Engineers";
+        Assert.assertTrue(actualHomePage.equals(expectedHomePage));
 
 
     }

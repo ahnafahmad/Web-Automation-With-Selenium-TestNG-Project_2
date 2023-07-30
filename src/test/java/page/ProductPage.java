@@ -56,7 +56,7 @@ public class ProductPage {
     public List<WebElement> verifyProductQuantity;
 
     @FindBy(className = "cart_total")
-    public List<WebElement> verifyProductTotalPrice;
+    public List<WebElement> verifyProductTotalPriceInProductDetailsPage;
 
     @FindBy(className = "cart_quantity_delete")
     public List<WebElement> deleteProducts;
@@ -83,12 +83,54 @@ public class ProductPage {
     public WebElement commentBox;
 
     @FindBy(xpath = "//a[contains(text(),'Place Order')]")
-    public WebElement placeOrder;
+    public WebElement btnPlaceOrder;
 
+    @FindBy(css = "[name = name_on_card]")
+    WebElement nameOnCard;
+
+    @FindBy(css = "[name = card_number]")
+    WebElement cardNumber;
+
+    @FindBy(css = "[name = cvc]")
+    WebElement cardCvc;
+
+    @FindBy(css = "[name = expiry_month]")
+    WebElement cardExpiryMonth;
+
+    @FindBy(css = "[name = expiry_year]")
+    WebElement cardExpiryYear;
+
+    @FindBy(id = "submit")
+    WebElement btnConfirmOrder;
+
+    @FindBy(xpath = "//p[contains(text(),'Congratulations!')]")
+    public WebElement placeOrderSuccessfullyAssertion;
+
+    @FindBy(css = "[data-qa = continue-button]")
+    public WebElement btnContinue;
+
+    @FindBy(xpath = "//a[contains(text(),'Download')]")
+    public WebElement btnDownloadInvoice;
+
+    @FindBy(className = "cart_total_price")
+    public List<WebElement> verifyProductTotalPriceInCheckoutPage;
 
 
     public ProductPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+    }
+
+    public void givingCardInformationForPayment(String name, String number, String cvc, String expiryMonth, String expiryYear){
+
+        nameOnCard.sendKeys(name);
+        cardNumber.sendKeys(number);
+        cardCvc.sendKeys(cvc);
+        cardExpiryMonth.sendKeys(expiryMonth);
+        cardExpiryYear.sendKeys(expiryYear);
+
+        btnConfirmOrder.click();
+
+
     }
 
 }
