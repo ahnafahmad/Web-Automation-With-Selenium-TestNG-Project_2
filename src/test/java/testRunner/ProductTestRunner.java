@@ -193,10 +193,9 @@ public class ProductTestRunner extends Setup {
         productPage.buyProductWhenCartIsEmpty.click();
         Thread.sleep(3000);
 
-
     }
 
-    @Test(priority = 4, description = "Test Case 18: View Category Products")
+    @Test(priority = 4, description = "Test Case 18: View Category Products and Test Case 19: View & Cart Brand Products")
     public void viewCategoryProducts() throws InterruptedException {
 
         productPage = new ProductPage(driver);
@@ -205,11 +204,30 @@ public class ProductTestRunner extends Setup {
         Utils.waitForElement(driver, productPage.productPageAssertion, 50);
         if (productPage.productPageAssertion.isDisplayed()) {
 
-            productPage.category1.click();
+            productPage.brand1.click();
             Thread.sleep(1000);
-            productPage.subCategory1.get(0).click();
+
         }
 
+
+        //Polo Brand Assertion in
+        String actualPoloBrandAssertion = productPage.categoryAssertion.getText();
+        String expectedPoloBrandAssertion = "BRAND - POLO PRODUCTS";
+        Assert.assertTrue(actualPoloBrandAssertion.equals(expectedPoloBrandAssertion));
+
+
+        productPage.brand2.click();
+
+
+        //KOOKIE KIDS Brand Assertion in
+        String actualKookieKidsBrandAssertion = productPage.categoryAssertion.getText();
+        String expectedKookieKidsBrandAssertion = "BRAND - KOOKIE KIDS PRODUCTS";
+        Assert.assertTrue(actualKookieKidsBrandAssertion.equals(expectedKookieKidsBrandAssertion));
+
+
+        productPage.category1.click();
+        Thread.sleep(1000);
+        productPage.subCategory1.get(0).click();
 
         //Woman Category Dress Sub-Category Assertion in
         String actualDressAssertion = productPage.categoryAssertion.getText();

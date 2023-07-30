@@ -81,6 +81,14 @@ public class ProductPage {
     public WebElement subCategory2;
 
 
+    @FindBy(xpath = "//a[@href='/brand_products/Polo']")
+    public WebElement brand1;
+
+    @FindBy(xpath = "//a[@href='/brand_products/Kookie Kids']")
+    public WebElement brand2;
+
+
+
     @FindBy(xpath = "//a[contains(text(),'View Product')]")
     public List<WebElement> btnViewProduct;
 
