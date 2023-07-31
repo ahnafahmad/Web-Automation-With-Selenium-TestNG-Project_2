@@ -95,5 +95,15 @@ public class LoginTestRunner extends Setup {
 //        String expectedAccountDeletedHomePage = "Signup / Login";
 //        Assert.assertTrue(actualAccountDeletedHomePage.contains(expectedAccountDeletedHomePage));
 
+
+        createAccountPage.logOutAccount.click();
+
+
+        // After Logout the Account Home Page Assertion
+        String actualAccountLogoutHomePage = createAccountPage.afterAccountLogoutHomePageAssertion.getText();
+        String expectedAccountLogoutHomePage = "Signup / Login";
+        Assert.assertTrue(actualAccountLogoutHomePage.contains(expectedAccountLogoutHomePage));
+        Thread.sleep(3000);
+
     }
 }
