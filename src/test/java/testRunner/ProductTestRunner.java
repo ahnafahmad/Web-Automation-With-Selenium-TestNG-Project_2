@@ -1,5 +1,6 @@
 package testRunner;
 
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.ParseException;
 import org.testng.Assert;
@@ -11,6 +12,7 @@ import utils.Utils;
 import java.io.IOException;
 import java.util.List;
 
+
 public class ProductTestRunner extends Setup {
 
 
@@ -20,6 +22,7 @@ public class ProductTestRunner extends Setup {
     ProductPage productPage;
     SubscriptionPage subscriptionPage;
     VerifyDifferentUIPage verifyDifferentUIPage;
+    CreateAccountTestRunner createAccountTestRunner;
 
 
     @Test(priority = 1, description = "Test Case 2: Login User with correct email and password")
@@ -40,15 +43,19 @@ public class ProductTestRunner extends Setup {
 
         signupPage.navLogin.click();
 
+        String file = "./src/test/resources/user.json";
 
-        String userEmail = "admin4@gmail.com";
-        String userPassword = "admin123";
+        List users = Utils.readJsonData(file);
+
+        JSONObject userObject = (JSONObject) users.get(users.size()-1);
+
+        String userEmail = (String) userObject.get("userEmail");
+        String userPassword = (String) userObject.get("userPassword");
         Thread.sleep(1000);
 
 
         loginPage.doLogin(userEmail,userPassword);
         Thread.sleep(1000);
-
 
         // After Account Creation Home Page Assertion
         String actualAccountCreatedHomePage = createAccountPage.afterAccountCreationHomePageAssertion.getText();
@@ -380,10 +387,28 @@ public class ProductTestRunner extends Setup {
 
     }
 
-    @Test(priority = 6, description = "Test Case 16: Place Order: Register while Checkout")
-    public void  placeOrderSuccessfully() throws InterruptedException {
+    @Test(priority = 6, description = "Test Case 16: Place Order: Register while Checkout & Test Case 23: Verify address details in checkout page")
+    public void  placeOrderSuccessfully() throws InterruptedException, IOException, ParseException {
 
         productPage = new ProductPage(driver);
+        createAccountTestRunner = new CreateAccountTestRunner();
+
+
+        String file = "./src/test/resources/user.json";
+
+        List users = Utils.readJsonData(file);
+
+        JSONObject userObject = (JSONObject) users.get(users.size()-1);
+
+        String userFirstName = (String) userObject.get("userFirstName");
+        String userCompany = (String) userObject.get("userCompany");
+        String userAddress1 = (String) userObject.get("userAddress1");
+        String userAddress2 = (String) userObject.get("userAddress2");
+        String userCity = (String) userObject.get("userCity");
+        String userMobile = (String) userObject.get("userMobile");
+        Thread.sleep(1000);
+
+
 
         productPage.proceedToCheckout.click();
 
@@ -394,6 +419,72 @@ public class ProductTestRunner extends Setup {
         String actualAddressDetails = productPage.headerTitle.get(0).getText();
         String expectedAddressDetails = "Address Details";
         Assert.assertTrue(actualAddressDetails.equals(expectedAddressDetails));
+
+
+
+        // DELIVERY ADDRESS Assertion
+        String actualDeliveryAddress = productPage.headerSubTitle.get(0).getText();
+        String expectedDeliveryAddress = "YOUR DELIVERY ADDRESS";
+        Assert.assertTrue(actualDeliveryAddress.equals(expectedDeliveryAddress));
+
+        String actualDeliveryAddressFirstName = productPage.addressFirstName.get(0).getText();
+        String expectedDeliveryAddressFirstName= userFirstName;
+        Assert.assertTrue(actualDeliveryAddressFirstName.contains(expectedDeliveryAddressFirstName));
+
+        String actualDeliveryAddressCompany = productPage.address1.get(0).getText();
+        String expectedDeliveryAddressCompany= userCompany;
+        Assert.assertTrue(actualDeliveryAddressCompany.contains(expectedDeliveryAddressCompany));
+
+        String actualDeliveryAddress1 = productPage.address1.get(1).getText();
+        String expectedDeliveryAddress1= userAddress1;
+        Assert.assertTrue(actualDeliveryAddress1.contains(expectedDeliveryAddress1));
+
+        String actualDeliveryAddress2 = productPage.address1.get(2).getText();
+        String expectedDeliveryAddress2= userAddress2;
+        Assert.assertTrue(actualDeliveryAddress2.contains(expectedDeliveryAddress2));
+
+        String actualDeliveryAddressCity = productPage.addressCity.get(0).getText();
+        String expectedDeliveryAddressCity= userCity;
+        Assert.assertTrue(actualDeliveryAddressCity.contains(expectedDeliveryAddressCity));
+
+        String actualDeliveryAddressMobileNumber = productPage.addressPhone.get(0).getText();
+        String expectedDeliveryAddressMobileNumber= userMobile;
+        Assert.assertTrue(actualDeliveryAddressMobileNumber.contains(expectedDeliveryAddressMobileNumber));
+
+
+
+        // BILLING ADDRESS Assertion
+        String actualBillingAddress = productPage.headerSubTitle.get(1).getText();
+        String expectedBillingAddress = "YOUR BILLING ADDRESS";
+        Assert.assertTrue(actualBillingAddress.equals(expectedBillingAddress));
+
+        String actualBillingAddressFirstName = productPage.addressFirstName.get(1).getText();
+        String expectedBillingAddressFirstName= userFirstName;
+        Assert.assertTrue(actualBillingAddressFirstName.contains(expectedBillingAddressFirstName));
+
+        String actualBillingAddressCompany = productPage.address1.get(3).getText();
+        String expectedBillingAddressCompany= userCompany;
+        Assert.assertTrue(actualBillingAddressCompany.contains(expectedBillingAddressCompany));
+
+        String actualBillingAddress1 = productPage.address1.get(4).getText();
+        String expectedBillingAddress1= userAddress1;
+        Assert.assertTrue(actualBillingAddress1.contains(expectedBillingAddress1));
+
+        String actualBillingAddress2 = productPage.address1.get(5).getText();
+        String expectedBillingAddress2= userAddress2;
+        Assert.assertTrue(actualBillingAddress2.contains(expectedBillingAddress2));
+
+        String actualBillingAddressCity = productPage.addressCity.get(1).getText();
+        String expectedBillingAddressCity= userCity;
+        Assert.assertTrue(actualBillingAddressCity.contains(expectedBillingAddressCity));
+
+        String actualBillingAddressMobileNumber = productPage.addressPhone.get(1).getText();
+        String expectedBillingAddressMobileNumber= userMobile;
+        Assert.assertTrue(actualBillingAddressMobileNumber.contains(expectedBillingAddressMobileNumber));
+
+
+
+
 
         //Review Your Order
         String actualReviewYourOrder = productPage.headerTitle.get(1).getText();

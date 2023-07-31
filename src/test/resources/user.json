@@ -1,1 +1,12 @@
-[{"userPassword":"admin123","userEmail":"Vashti@gmail.com"},{"userPassword":"admin123","userEmail":"Iva@gmail.com"},{"userPassword":"admin123","userEmail":"jefferey.hills@gmail.com"},{"userPassword":"admin123","userEmail":"zelda.klocko@gmail.com"}]
+[
+  {
+    "userCity": "Dulciehaven",
+    "userPassword": "admin123",
+    "userMobile": "1-317-369-6274",
+    "userEmail": "cameron.mueller@gmail.com",
+    "userFirstName": "Phillis",
+    "userCompany": "Hirthe, Cormier and Lang",
+    "userAddress1": "8693 Ronnie Cliffs, Stammtown, MD 22379",
+    "userAddress2": "Suite 816"
+  }
+]

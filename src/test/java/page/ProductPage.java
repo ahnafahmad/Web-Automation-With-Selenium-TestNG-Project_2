@@ -103,6 +103,27 @@ public class ProductPage {
     @FindBy(className = "heading")
     public List<WebElement> headerTitle;
 
+    @FindBy(className = "page-subheading")
+    public List<WebElement> headerSubTitle;
+
+    @FindBy(className = "address_firstname")
+    public List<WebElement> addressFirstName;
+
+    @FindBy(className = "address_address1")
+    public List<WebElement> address1;
+
+    @FindBy(className = "address_city")
+    public List<WebElement> addressCity;
+
+    @FindBy(className = "address_country_name")
+    public List<WebElement> addressCountry;
+
+    @FindBy(className = "address_phone")
+    public List<WebElement> addressPhone;
+
+
+
+
     @FindBy(css = "[name = message]")
     public WebElement commentBox;
 

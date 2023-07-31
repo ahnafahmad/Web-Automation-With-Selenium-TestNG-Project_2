@@ -3,6 +3,7 @@
 <suite name="Master Suite">
     <suite-files>
         <suite-file path="CreateAccountSuite.xml"></suite-file>
-        <suite-file path="LoginSuite.xml"></suite-file>
+<!--        <suite-file path="LoginSuite.xml"></suite-file>-->
+        <suite-file path="ProductTestSuite.xml"></suite-file>
     </suite-files>
 </suite>

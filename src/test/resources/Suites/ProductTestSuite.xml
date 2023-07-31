@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Product Automation Suite">
+    <test name="Different Actions in Product Page">
+        <classes>
+            <class name="testRunner.ProductTestRunner"/>
+        </classes>
+    </test>
+</suite>

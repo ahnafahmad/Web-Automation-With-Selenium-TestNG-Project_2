@@ -20,6 +20,17 @@ public class CreateAccountTestRunner extends Setup {
 
     String userEmail;
 
+   public String userPassword;
+    public String firstName;
+    public String lastName;
+    public String company;
+    public String address1;
+    public String address2;
+    public String state;
+    public String city;
+    public String zipCode;
+    public String mobileNumber;
+
 
     @Test(priority = 1, description = "Test Case 5: Register User with existing email")
     public void signUpUnsuccessfulWithExistingCredentials() throws InterruptedException {
@@ -46,7 +57,7 @@ public class CreateAccountTestRunner extends Setup {
 
 
         String name = "Admin";
-        String userEmail = "admin1@gmail.com";
+        String userEmail = "admin2@gmail.com";
 
         signupPage.doSignUp(name, userEmail);
         Thread.sleep(3000);
@@ -84,23 +95,23 @@ public class CreateAccountTestRunner extends Setup {
 
     }
 
-    @Test(priority = 3,description = "Enter All the Relevant Information after Signing up Successfully")
+    @Test(priority = 3, description = "Enter All the Relevant Information after Signing up Successfully")
     public void enteredAccountInformationSuccessfully() throws InterruptedException, IOException, ParseException {
 
         createAccountPage = new CreateAccountPage(driver);
         utils = new Utils();
         utils.randomData();
 
-        String userPassword = "admin123";
-        String firstName = utils.getFirstName();
-        String lastName = utils.getLastName();
-        String company = utils.getCompany();
-        String address1 = utils.getAddress1();
-        String address2 = utils.getAddress2();
-        String state = utils.getState();
-        String city = utils.getCity();
-        String zipCode = utils.getZipCode();
-        String mobileNumber = utils.getMobileNumber();
+        userPassword = "admin123";
+        firstName = utils.getFirstName();
+        lastName = utils.getLastName();
+        company = utils.getCompany();
+        address1 = utils.getAddress1();
+        address2 = utils.getAddress2();
+        state = utils.getState();
+        city = utils.getCity();
+        zipCode = utils.getZipCode();
+        mobileNumber = utils.getMobileNumber();
 
 
         createAccountPage.createAccount(userPassword, firstName, lastName, company, address1, address2, state, city, zipCode, mobileNumber);
@@ -115,7 +126,7 @@ public class CreateAccountTestRunner extends Setup {
 
         Utils.waitForElement(driver, createAccountPage.accountCreatedSuccessfulAssertion, 50);
         if (createAccountPage.accountCreatedSuccessfulAssertion.isDisplayed()) {
-            utils.saveJsonList(userEmail, userPassword);
+            utils.saveJsonList(userEmail, userPassword, firstName, company, address1, address2, city, mobileNumber );
         }
 
         createAccountPage.btnContinue.click();
@@ -126,7 +137,6 @@ public class CreateAccountTestRunner extends Setup {
         String actualAccountCreatedHomePage = createAccountPage.afterAccountCreationHomePageAssertion.getText();
         String expectedAccountCreatedHomePage = "Logged in as";
         Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
-
 
 
 //        createAccountPage.navDeleteAccount.click();

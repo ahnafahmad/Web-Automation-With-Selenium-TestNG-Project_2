@@ -52,7 +52,7 @@ public class Utils {
         setMobileNumber(faker.phoneNumber().cellPhone());
     }
 
-    public void saveJsonList(String userEmail, String userPassword) throws IOException, ParseException {
+    public void saveJsonList(String userEmail, String userPassword, String userFirstName, String userCompany, String userAddress1, String userAddress2, String userCity, String userMobile ) throws IOException, ParseException {
 
         String fileName = "./src/test/resources/user.json";
         JSONParser parser = new JSONParser();
@@ -60,8 +60,15 @@ public class Utils {
         JSONArray jsonArray = (JSONArray) obj;
 
         JSONObject userObject = new JSONObject();
+
         userObject.put("userEmail", userEmail);
         userObject.put("userPassword", userPassword);
+        userObject.put("userFirstName", userFirstName);
+        userObject.put("userCompany", userCompany);
+        userObject.put("userAddress1", userAddress1);
+        userObject.put("userAddress2", userAddress2);
+        userObject.put("userCity", userCity);
+        userObject.put("userMobile", userMobile);
 
         jsonArray.add(userObject);
 
@@ -78,7 +85,7 @@ public class Utils {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public static List readJsondata(String fileName) throws IOException, ParseException {
+    public static List readJsonData(String fileName) throws IOException, ParseException {
 
         JSONParser parser = new JSONParser();
         Object obj = parser.parse(new FileReader(fileName));
