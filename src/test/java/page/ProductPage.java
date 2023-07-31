@@ -140,6 +140,7 @@ public class ProductPage {
     public List<WebElement> verifyProductTotalPriceInCheckoutPage;
 
 
+
     @FindBy(xpath = "//a[contains(text(),'Write')]")
     public WebElement verifyReviewPage;
 
@@ -157,6 +158,19 @@ public class ProductPage {
 
     @FindBy(xpath = "//span[contains(text(),'Thank you')]")
     public WebElement reviewSubmittedSuccessfully;
+
+
+
+    @FindBy(xpath = "//h2[contains(text(),'recommended')]")
+    public WebElement verifyRecommendedPageAssertion;
+
+
+
+    @FindBy(xpath = "//a[contains(text(),'Blue Top')]")
+    public WebElement verifyRecommendedProductDescription;
+
+    @FindBy(xpath = "//p[contains(text(),'Blue')]")
+    public WebElement waitForThisProduct;
 
 
     public ProductPage(WebDriver driver) {

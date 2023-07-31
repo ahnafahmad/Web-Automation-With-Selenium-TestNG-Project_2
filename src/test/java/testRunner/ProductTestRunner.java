@@ -322,17 +322,14 @@ public class ProductTestRunner extends Setup {
 
 
         productPage.givingReview(name,email,review);
-        Thread.sleep(3000);
+
 
 
         //Review Submitted Successfully Assertion
         String actualSuccessfulReviewAssertion = productPage.reviewSubmittedSuccessfully.getText();
         String expectedSuccessfulReviewAssertion= "Thank you for your review.";
         Assert.assertTrue(actualSuccessfulReviewAssertion.equals(expectedSuccessfulReviewAssertion));
-
-
-
-
+        Thread.sleep(3000);
 
 
 
@@ -435,12 +432,76 @@ public class ProductTestRunner extends Setup {
         productPage.btnContinue.click();
 
 
-        //Home Page Assertion After Placing a Order Successfully
+        //Home Page Assertion After Placing an Order Successfully
         String actualHomePage = signupPage.homePageAssertion.getText();
         String expectedHomePage = "Full-Fledged practice website for Automation Engineers";
         Assert.assertTrue(actualHomePage.equals(expectedHomePage));
 
 
     }
+
+    @Test(priority = 7, description = "Test Case 22: Add to cart from Recommended items")
+    public void addToCartFromRecommendedItems() throws InterruptedException {
+
+            productPage = new ProductPage(driver);
+
+
+            Utils.scrollThePage(driver);
+
+
+
+        //Recommended Items Page Assertion
+        String actualRecommendedItemsPage = productPage.verifyRecommendedPageAssertion.getText();
+        String expectedRecommendedItemsPage = "RECOMMENDED ITEMS";
+        Assert.assertTrue(actualRecommendedItemsPage.equals(expectedRecommendedItemsPage));
+
+
+        Utils.waitForElement(driver, productPage.waitForThisProduct, 50);
+        if (productPage.waitForThisProduct.isDisplayed()) {
+            productPage.addToCart.get(68).click();
+            Thread.sleep(2000);
+        }
+
+
+        // Product Add To Cart Successfully
+        String actualAddToCartProduct = productPage.successfullyAddToCartAssertion.getText();
+        String expectedAddToCartProduct = "Your product has been added to cart.";
+        Assert.assertTrue(actualAddToCartProduct.equals(expectedAddToCartProduct));
+
+
+        productPage.btnViewCart.click();
+        Thread.sleep(1000);
+
+
+        //Product Added Successfully Assertion
+
+        //Product Description Assertion
+        String actualProductDescription = productPage.verifyRecommendedProductDescription.getText();
+        String expectedProductDescription = "Blue Top";
+        Assert.assertTrue(actualProductDescription.equals(expectedProductDescription));
+
+        //1st Product Price Assertion
+        String actualProductPrice = productPage.verifyProductPrice.get(0).getText();
+        String expectedProductPrice = "Rs. 500";
+        Assert.assertTrue(actualProductPrice.equals(expectedProductPrice));
+
+        //1st Product Quantity Assertion
+        String actualProductQuantity = productPage.verifyProductQuantity.get(0).getText();
+        String expectedProductQuantity = "1";
+        Assert.assertTrue(actualProductQuantity.equals(expectedProductQuantity));
+
+        //1st Product total Price Assertion
+        String actualProductTotalPrice = productPage.verifyProductTotalPriceInProductDetailsPage.get(0).getText();
+        String expectedProductTotalPrice = "Rs. 500";
+        Assert.assertTrue(actualProductTotalPrice.equals(expectedProductTotalPrice));
+
+
+        productPage.deleteProducts.get(0).click();
+
+
+
+    }
+
+
 
 }
