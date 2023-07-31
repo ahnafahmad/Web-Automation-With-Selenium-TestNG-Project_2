@@ -194,6 +194,11 @@ public class ProductPage {
     public WebElement waitForThisProduct;
 
 
+    @FindBy(className = "fa-angle-up")
+    public WebElement scrollUpButton;
+
+
+
     public ProductPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }

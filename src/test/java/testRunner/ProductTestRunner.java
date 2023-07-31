@@ -387,7 +387,7 @@ public class ProductTestRunner extends Setup {
 
     }
 
-    @Test(priority = 6, description = "Test Case 16: Place Order: Register while Checkout & Test Case 23: Verify address details in checkout page")
+    @Test(priority = 6, description = "Test Case 16: Place Order: Register while Checkout , Test Case 23: Verify address details in checkout page , Test Case 24: Download Invoice after purchase order & Test Case 25: Verify Scroll Up using 'Arrow' button and Scroll Down functionality")
     public void  placeOrderSuccessfully() throws InterruptedException, IOException, ParseException {
 
         productPage = new ProductPage(driver);
@@ -411,6 +411,23 @@ public class ProductTestRunner extends Setup {
 
 
         productPage.proceedToCheckout.click();
+
+
+        Utils.scrollThePage(driver);
+
+
+        //Review Your Order
+        String actualReviewYourOrder = productPage.headerTitle.get(1).getText();
+        String expectedReviewYourOrder = "Review Your Order";
+        Assert.assertTrue(actualReviewYourOrder.equals(expectedReviewYourOrder));
+
+        //Total Price Assertion
+        String actualTotalPrice = productPage.verifyProductTotalPriceInCheckoutPage.get(1).getText();
+        String expectedTotalPrice = "Rs. 4800";
+        Assert.assertTrue(actualTotalPrice.equals(expectedTotalPrice));
+
+
+        productPage.scrollUpButton.click();
 
 
         //Checkout Page Assertion
@@ -486,18 +503,8 @@ public class ProductTestRunner extends Setup {
 
 
 
-        //Review Your Order
-        String actualReviewYourOrder = productPage.headerTitle.get(1).getText();
-        String expectedReviewYourOrder = "Review Your Order";
-        Assert.assertTrue(actualReviewYourOrder.equals(expectedReviewYourOrder));
-
-        //Total Price Assertion
-        String actualTotalPrice = productPage.verifyProductTotalPriceInCheckoutPage.get(1).getText();
-        String expectedTotalPrice = "Rs. 4800";
-        Assert.assertTrue(actualTotalPrice.equals(expectedTotalPrice));
-
-
         productPage.commentBox.sendKeys("Please Send Me the order in the Below given Address.");
+        Thread.sleep(2000);
 
         productPage.btnPlaceOrder.click();
 
