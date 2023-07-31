@@ -248,7 +248,7 @@ public class ProductTestRunner extends Setup {
     }
 
 
-    @Test(priority = 5, description = "Test Case 13: Verify Product quantity in Cart")
+    @Test(priority = 5, description = "Test Case 13: Verify Product quantity in Cart & Test Case 21: Add review on product")
     public void addMultipleQuantityProductsInCart() throws InterruptedException {
 
         productPage = new ProductPage(driver);
@@ -303,6 +303,39 @@ public class ProductTestRunner extends Setup {
         productPage.productQuantity.clear();
         productPage.productQuantity.sendKeys("4");
 
+
+
+
+
+
+        //Add a Review on Product
+
+        //Review Element Assertion
+        String actualReviewPage = productPage.verifyReviewPage.getText();
+        String expectedReviewPage = "WRITE YOUR REVIEW";
+        Assert.assertTrue(actualReviewPage.equals(expectedReviewPage));
+
+
+        String name = "Admin";
+        String email = "admin4@gmail.com";
+        String review = "That's look like a Beautiful Product. I like it so much";
+
+
+        productPage.givingReview(name,email,review);
+        Thread.sleep(3000);
+
+
+        //Review Submitted Successfully Assertion
+        String actualSuccessfulReviewAssertion = productPage.reviewSubmittedSuccessfully.getText();
+        String expectedSuccessfulReviewAssertion= "Thank you for your review.";
+        Assert.assertTrue(actualSuccessfulReviewAssertion.equals(expectedSuccessfulReviewAssertion));
+
+
+
+
+
+
+
         productPage.btnAddToCart.click();
         Thread.sleep(2000);
 
@@ -321,7 +354,6 @@ public class ProductTestRunner extends Setup {
         String actualCartPage = subscriptionPage.cartPageAssertion.getText();
         String expectedCartPage = "Shopping Cart";
         Assert.assertTrue(actualCartPage.equals(expectedCartPage));
-
 
 
 
@@ -347,6 +379,8 @@ public class ProductTestRunner extends Setup {
         String actualProductTotalPrice = productPage.verifyProductTotalPriceInProductDetailsPage.get(0).getText();
         String expectedProductTotalPrice = "Rs. 4800";
         Assert.assertTrue(actualProductTotalPrice.equals(expectedProductTotalPrice));
+
+
     }
 
     @Test(priority = 6, description = "Test Case 16: Place Order: Register while Checkout")

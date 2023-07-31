@@ -88,7 +88,6 @@ public class ProductPage {
     public WebElement brand2;
 
 
-
     @FindBy(xpath = "//a[contains(text(),'View Product')]")
     public List<WebElement> btnViewProduct;
 
@@ -141,6 +140,25 @@ public class ProductPage {
     public List<WebElement> verifyProductTotalPriceInCheckoutPage;
 
 
+    @FindBy(xpath = "//a[contains(text(),'Write')]")
+    public WebElement verifyReviewPage;
+
+    @FindBy(id = "name")
+    public WebElement txtName;
+
+    @FindBy(id = "email")
+    public WebElement txtEmail;
+
+    @FindBy(id = "review")
+    public WebElement txtReview;
+
+    @FindBy(id = "button-review")
+    public WebElement btnSubmit;
+
+    @FindBy(xpath = "//span[contains(text(),'Thank you')]")
+    public WebElement reviewSubmittedSuccessfully;
+
+
     public ProductPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
     }
@@ -155,6 +173,16 @@ public class ProductPage {
 
         btnConfirmOrder.click();
 
+
+    }
+
+    public void givingReview(String name, String email, String review){
+
+            txtName.sendKeys(name);
+            txtEmail.sendKeys(email);
+            txtReview.sendKeys(review);
+
+            btnSubmit.click();
 
     }
 
