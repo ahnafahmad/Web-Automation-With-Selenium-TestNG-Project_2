@@ -10,10 +10,18 @@
 
 
  ## Project Scenarios
-The user can sign up to the System.
- - The user can Enter all the necessary information. 
- - The user can Login to the System.
- - The User can logout from the system
+ - The user can sign up to the System.
+ - The user can Enter all the necessary information for creating an account. 
+ - The user can log in to the System.
+ - The User can contact with the administration.
+ - The User can view all the Products.
+ - The User can give a review for a specific Product.
+ - The User can add a Product to the Cart.
+ - The User can Purchase Products from the system.
+ - The User can make a Payment with his card for his purchase Product.
+ - The User can place a order with the Delivery & Billing Address.
+ - The User can Download the Invoice of the Order.
+ - The User can log out from the system.
  - The user can Delete the Account from the System.
    
 
@@ -74,3 +82,39 @@ allure generate allure-results --clean -o allure-report
 // https://mvnrepository.com/artifact/org.projectlombok/lombok
     testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
 ```
+
+
+## Selenium TestNG Automation Project Report Image
+
+
+![1](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/58dc41d1-d4fb-4547-b615-427a79946bcb)
+
+
+![7](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/3f248b79-d178-4009-8202-9529a517056c)
+
+
+![2](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/89b2ae74-c357-47b4-926d-e52ffeb12bc8)
+
+
+![3](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/5c1f386a-d768-4370-b8be-f3772936dd89)
+
+
+![4](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/e9f2d7ee-3b51-4051-bc30-2a9e2d6e3a57)
+
+
+![5](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/d1439f61-6588-4efa-a6cb-705f307f3a8c)
+
+
+![6](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/548e3a9d-ff90-4bc9-94d8-51863c539785)
+
+
+![8](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/07dd8788-ab01-439d-ade2-c5f17d1b4fa4)
+
+
+![9](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/d4c282cf-6679-4a8c-aaf0-07caa5656d03)
+
+
+![10](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/31bbf19c-2af2-49ec-b9ab-92909225f285)
+
+
+![11](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/e92142a0-ed2c-4396-911d-21f0f3689300)
