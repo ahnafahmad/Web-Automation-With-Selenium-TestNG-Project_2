@@ -46,7 +46,9 @@ public class CreateAccountTestRunner extends Setup {
 
 
         String name = "Admin";
+
         String userEmail = "admin4@gmail.com";
+
 
         signupPage.doSignUp(name, userEmail);
         Thread.sleep(3000);
@@ -84,7 +86,7 @@ public class CreateAccountTestRunner extends Setup {
 
     }
 
-    @Test(priority = 3,description = "Enter All the Relevant Information after Signing up Successfully")
+    @Test(priority = 3, description = "Enter All the Relevant Information after Signing up Successfully")
     public void enteredAccountInformationSuccessfully() throws InterruptedException, IOException, ParseException {
 
         createAccountPage = new CreateAccountPage(driver);
@@ -115,7 +117,7 @@ public class CreateAccountTestRunner extends Setup {
 
         Utils.waitForElement(driver, createAccountPage.accountCreatedSuccessfulAssertion, 50);
         if (createAccountPage.accountCreatedSuccessfulAssertion.isDisplayed()) {
-            utils.saveJsonList(userEmail, userPassword);
+            utils.saveJsonList(userEmail, userPassword, firstName, company, address1, address2, city, mobileNumber );
         }
 
         createAccountPage.btnContinue.click();
@@ -126,7 +128,6 @@ public class CreateAccountTestRunner extends Setup {
         String actualAccountCreatedHomePage = createAccountPage.afterAccountCreationHomePageAssertion.getText();
         String expectedAccountCreatedHomePage = "Logged in as";
         Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
-
 
 
 //        createAccountPage.navDeleteAccount.click();

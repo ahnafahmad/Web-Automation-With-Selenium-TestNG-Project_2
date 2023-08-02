@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Product Automation Suite">
+    <test name="User can Add Product to the Cart, User can buy Product, User can do Payment Successfully ">
+        <classes>
+            <class name="testRunner.ProductTestRunner"/>
+        </classes>
+    </test>
+</suite>

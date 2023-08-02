@@ -60,7 +60,7 @@ public class LoginTestRunner extends Setup {
 
         String file = "./src/test/resources/user.json";
 
-        List users = Utils.readJsondata(file);
+        List users = Utils.readJsonData(file);
 
         JSONObject userObject = (JSONObject) users.get(users.size()-1);
 
@@ -77,22 +77,33 @@ public class LoginTestRunner extends Setup {
         String expectedAccountCreatedHomePage = "Logged in as";
         Assert.assertTrue(actualAccountCreatedHomePage.contains(expectedAccountCreatedHomePage));
 
-        createAccountPage.navDeleteAccount.click();
+
+//        createAccountPage.navDeleteAccount.click();
+//
+//
+//        // Account Deletion Successful Page Assertion
+//        String actualAccountDeletedPage = createAccountPage.accountDeletedSuccessfulAssertion.getText();
+//        String expectedAccountDeletedPage = "ACCOUNT DELETED!";
+//        Assert.assertTrue(actualAccountDeletedPage.contains(expectedAccountDeletedPage));
+//
+//
+//        createAccountPage.btnContinue.click();
+//
+//
+//        // After Account Deletion Home Page Assertion
+//        String actualAccountDeletedHomePage = createAccountPage.afterAccountDeletionHomePageAssertion.getText();
+//        String expectedAccountDeletedHomePage = "Signup / Login";
+//        Assert.assertTrue(actualAccountDeletedHomePage.contains(expectedAccountDeletedHomePage));
 
 
-        // Account Deletion Successful Page Assertion
-        String actualAccountDeletedPage = createAccountPage.accountDeletedSuccessfulAssertion.getText();
-        String expectedAccountDeletedPage = "ACCOUNT DELETED!";
-        Assert.assertTrue(actualAccountDeletedPage.contains(expectedAccountDeletedPage));
+        createAccountPage.logOutAccount.click();
 
 
-        createAccountPage.btnContinue.click();
-
-
-        // After Account Deletion Home Page Assertion
-        String actualAccountDeletedHomePage = createAccountPage.afterAccountDeletionHomePageAssertion.getText();
-        String expectedAccountDeletedHomePage = "Signup / Login";
-        Assert.assertTrue(actualAccountDeletedHomePage.contains(expectedAccountDeletedHomePage));
+        // After Logout the Account Home Page Assertion
+        String actualAccountLogoutHomePage = createAccountPage.afterAccountLogoutHomePageAssertion.getText();
+        String expectedAccountLogoutHomePage = "Signup / Login";
+        Assert.assertTrue(actualAccountLogoutHomePage.contains(expectedAccountLogoutHomePage));
+        Thread.sleep(3000);
 
     }
 }

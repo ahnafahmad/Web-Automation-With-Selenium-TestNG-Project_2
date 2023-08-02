@@ -46,7 +46,7 @@ public class ProductPage {
     @FindBy(xpath = "//a[contains(text(),'Beautiful Peacock Blue Cotton Linen Saree')]")
     public WebElement verifyProductDescription2;
 
-    @FindBy(xpath = "//a[contains(text(),'Blue Top')]")
+    @FindBy(xpath = "//a[contains(text(),'Regular Fit Straight Jeans')]")
     public WebElement verifySingleProductDescription;
 
     @FindBy(className = "cart_price")
@@ -56,13 +56,37 @@ public class ProductPage {
     public List<WebElement> verifyProductQuantity;
 
     @FindBy(className = "cart_total")
-    public List<WebElement> verifyProductTotalPrice;
+    public List<WebElement> verifyProductTotalPriceInProductDetailsPage;
 
     @FindBy(className = "cart_quantity_delete")
     public List<WebElement> deleteProducts;
 
     @FindBy(xpath = "//u[contains(text(),'here')]")
     public WebElement buyProductWhenCartIsEmpty;
+
+
+    @FindBy(xpath = "//a[normalize-space()='Women']")
+    public WebElement category1;
+
+    @FindBy(xpath = "//a[contains(text(),'Dress')]")
+    public List<WebElement> subCategory1;
+
+    @FindBy(className = "title")
+    public WebElement categoryAssertion;
+
+    @FindBy(xpath = "//a[normalize-space()='Men']")
+    public WebElement category2;
+
+    @FindBy(xpath = "//a[contains(text(),'Jeans')]")
+    public WebElement subCategory2;
+
+
+    @FindBy(xpath = "//a[@href='/brand_products/Polo']")
+    public WebElement brand1;
+
+    @FindBy(xpath = "//a[@href='/brand_products/Kookie Kids']")
+    public WebElement brand2;
+
 
     @FindBy(xpath = "//a[contains(text(),'View Product')]")
     public List<WebElement> btnViewProduct;
@@ -79,16 +103,127 @@ public class ProductPage {
     @FindBy(className = "heading")
     public List<WebElement> headerTitle;
 
+    @FindBy(className = "page-subheading")
+    public List<WebElement> headerSubTitle;
+
+    @FindBy(className = "address_firstname")
+    public List<WebElement> addressFirstName;
+
+    @FindBy(className = "address_address1")
+    public List<WebElement> address1;
+
+    @FindBy(className = "address_city")
+    public List<WebElement> addressCity;
+
+    @FindBy(className = "address_country_name")
+    public List<WebElement> addressCountry;
+
+    @FindBy(className = "address_phone")
+    public List<WebElement> addressPhone;
+
+
+
+
     @FindBy(css = "[name = message]")
     public WebElement commentBox;
 
     @FindBy(xpath = "//a[contains(text(),'Place Order')]")
-    public WebElement placeOrder;
+    public WebElement btnPlaceOrder;
+
+    @FindBy(css = "[name = name_on_card]")
+    WebElement nameOnCard;
+
+    @FindBy(css = "[name = card_number]")
+    WebElement cardNumber;
+
+    @FindBy(css = "[name = cvc]")
+    WebElement cardCvc;
+
+    @FindBy(css = "[name = expiry_month]")
+    WebElement cardExpiryMonth;
+
+    @FindBy(css = "[name = expiry_year]")
+    WebElement cardExpiryYear;
+
+    @FindBy(id = "submit")
+    WebElement btnConfirmOrder;
+
+    @FindBy(xpath = "//p[contains(text(),'Congratulations!')]")
+    public WebElement placeOrderSuccessfullyAssertion;
+
+    @FindBy(css = "[data-qa = continue-button]")
+    public WebElement btnContinue;
+
+    @FindBy(xpath = "//a[contains(text(),'Download')]")
+    public WebElement btnDownloadInvoice;
+
+    @FindBy(className = "cart_total_price")
+    public List<WebElement> verifyProductTotalPriceInCheckoutPage;
+
+
+
+    @FindBy(xpath = "//a[contains(text(),'Write')]")
+    public WebElement verifyReviewPage;
+
+    @FindBy(id = "name")
+    public WebElement txtName;
+
+    @FindBy(id = "email")
+    public WebElement txtEmail;
+
+    @FindBy(id = "review")
+    public WebElement txtReview;
+
+    @FindBy(id = "button-review")
+    public WebElement btnSubmit;
+
+    @FindBy(xpath = "//span[contains(text(),'Thank you')]")
+    public WebElement reviewSubmittedSuccessfully;
+
+
+
+    @FindBy(xpath = "//h2[contains(text(),'recommended')]")
+    public WebElement verifyRecommendedPageAssertion;
+
+
+
+    @FindBy(xpath = "//a[contains(text(),'Blue Top')]")
+    public WebElement verifyRecommendedProductDescription;
+
+    @FindBy(xpath = "//p[contains(text(),'Blue')]")
+    public WebElement waitForThisProduct;
+
+
+    @FindBy(className = "fa-angle-up")
+    public WebElement scrollUpButton;
 
 
 
     public ProductPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
+    }
+
+    public void givingCardInformationForPayment(String name, String number, String cvc, String expiryMonth, String expiryYear){
+
+        nameOnCard.sendKeys(name);
+        cardNumber.sendKeys(number);
+        cardCvc.sendKeys(cvc);
+        cardExpiryMonth.sendKeys(expiryMonth);
+        cardExpiryYear.sendKeys(expiryYear);
+
+        btnConfirmOrder.click();
+
+
+    }
+
+    public void givingReview(String name, String email, String review){
+
+            txtName.sendKeys(name);
+            txtEmail.sendKeys(email);
+            txtReview.sendKeys(review);
+
+            btnSubmit.click();
+
     }
 
 }
