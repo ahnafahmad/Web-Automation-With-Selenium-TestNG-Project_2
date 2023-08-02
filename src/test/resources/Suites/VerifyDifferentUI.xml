@@ -2,7 +2,7 @@
 <suite name="Automation Exercise Website Create Account Automation Suite">
 <test name="user can verify Test Cases Page and Products Page successfully">
     <classes>
-        <class name="testRunner.CreateAccountTestRunner"/>
+        <class name="testRunner.VerifyDifferentUITestRunner"/>
     </classes>
 </test>
 </suite>

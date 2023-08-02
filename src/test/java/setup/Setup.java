@@ -35,9 +35,9 @@ public class Setup {
 //    }
 
 
-//    @AfterTest
-//    public void quitBrowser() {
-//        driver.close();
-//    }
+    @AfterTest
+    public void quitBrowser() {
+        driver.close();
+    }
 
 }

@@ -268,7 +268,7 @@ public class ProductTestRunner extends Setup {
 
 
         //Product Name Visibility Assertion
-        String actualProductName = verifyDifferentUIPage.productName.getText();
+        String actualProductName = verifyDifferentUIPage.productNameForAddingProduct.getText();
         String expectedProductName = "Regular Fit Straight Jeans";
         Assert.assertTrue(actualProductName.equals(expectedProductName));
 
@@ -411,9 +411,11 @@ public class ProductTestRunner extends Setup {
         String actualTotalPrice = productPage.verifyProductTotalPriceInCheckoutPage.get(1).getText();
         String expectedTotalPrice = "Rs. 4800";
         Assert.assertTrue(actualTotalPrice.equals(expectedTotalPrice));
+        Thread.sleep(1000);
 
 
         productPage.scrollUpButton.click();
+        Thread.sleep(2000);
 
 
         //Checkout Page Assertion

@@ -67,7 +67,7 @@ public class VerifyDifferentUITestRunner extends Setup {
 
 
         //Product Name Visibility Assertion
-        String actualProductName = verifyDifferentUIPage.productName.getText();
+        String actualProductName = verifyDifferentUIPage.productNameForVerifyingUI.getText();
         String expectedProductName = "Blue Top";
         Assert.assertTrue(actualProductName.equals(expectedProductName));
 
