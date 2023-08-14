@@ -1,6 +1,6 @@
 ## Automation Exercise: Website Automation With Selenium-Java TestNG
 
-<br><br>
+<br>
 ### Tool used in this Project:<br>
  - Selenium
 <br><br>
