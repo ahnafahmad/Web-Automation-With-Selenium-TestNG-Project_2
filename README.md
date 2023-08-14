@@ -1,4 +1,4 @@
-<h1>Automation Exercise: Website Automation With Selenium-Java TestNG</h1> 
+<h2>Automation Exercise: Website Automation With Selenium-Java TestNG</h2> 
 <hr>
 
 <br>
