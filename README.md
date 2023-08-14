@@ -1,6 +1,6 @@
 ## Automation Exercise: Website Automation With Selenium-Java TestNG
 
-
+<br><br>
 ### Tool used in this Project:<br>
  - Selenium
 <br><br>
@@ -45,7 +45,7 @@ allure generate allure-results --clean -o allure-report
 ```
 <br><br>
 
- ### Prerequisite<br>
+ ### Prerequisite:<br>
   - Some gradle dependencies are a must for running this project
   These are: 
  ```
@@ -123,7 +123,7 @@ allure generate allure-results --clean -o allure-report
 <br><br>
 
 
-### Output Video of the Project<br>
+### Output Video of the Project:<br>
 
 
 Drive Link: 
