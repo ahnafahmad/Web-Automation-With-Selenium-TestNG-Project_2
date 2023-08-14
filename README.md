@@ -33,7 +33,6 @@
  ```
 <br><br>
 
-
   ### How to Generate an Allure Report: <br>
  Automated Automation Exercise website using Selenium and TestNG, where test cases are added for User Signup, User Login, Account Delete by the User from the System.
  Steps to generate the report:
@@ -87,7 +86,7 @@ allure generate allure-results --clean -o allure-report
 ```
 <br><br>
 
-### Selenium TestNG Automation Project Report Image
+### Selenium TestNG Automation Project Report Image:
 <br>
 
 ![1](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/58dc41d1-d4fb-4547-b615-427a79946bcb)
@@ -122,6 +121,7 @@ allure generate allure-results --clean -o allure-report
 
 ![11](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/e92142a0-ed2c-4396-911d-21f0f3689300)
 <br><br>
+
 
 ### Output Video of the Project<br>
 
