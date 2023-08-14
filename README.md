@@ -1,15 +1,15 @@
 ## Automation Exercise: Website Automation With Selenium-Java TestNG
 
 
-## Tool used in this Project
+### Tool used in this Project
  - Selenium
 
 
-## Framework used in this Project
+### Framework used in this Project
  - TestNG
 
 
- ## Project Scenarios
+ ### Project Scenarios
  - The user can sign up to the System.
  - The user can Enter all the necessary information for creating an account. 
  - The user can log in to the System.
@@ -25,14 +25,14 @@
  - The user can Delete the Account from the System.
    
 
- ## How to run this project:
+ ### How to run this project:
  - Clone this project [Web-Automation-with-Selenium_TestNG](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2.git)
  - Hit the following command:
   ```
  gradle clean test
  ```
  
-  ## How to Generate an Allure Report: 
+  ### How to Generate an Allure Report: 
  Automated Automation Exercise website using Selenium and TestNG, where test cases are added for User Signup, User Login, Account Delete by the User from the System.
  Steps to generate the report:
  - Give the following commands by opening the terminal in the project folder to create the Allure Report:
@@ -43,7 +43,7 @@ allure generate allure-results --clean -o allure-report
  allure serve allure-results
 ```
 
- ## Prerequisite
+ ### Prerequisite
   - Some gradle dependencies are a must for running this project
   These are: 
  ```
@@ -84,7 +84,7 @@ allure generate allure-results --clean -o allure-report
 ```
 
 
-## Selenium TestNG Automation Project Report Image
+### Selenium TestNG Automation Project Report Image
 
 
 ![1](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/58dc41d1-d4fb-4547-b615-427a79946bcb)
@@ -120,7 +120,7 @@ allure generate allure-results --clean -o allure-report
 ![11](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/e92142a0-ed2c-4396-911d-21f0f3689300)
 
 
-## Output Video of the Project
+### Output Video of the Project
 
 
 Drive Link: 
