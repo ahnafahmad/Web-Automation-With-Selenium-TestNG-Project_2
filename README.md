@@ -1,11 +1,12 @@
 ## Automation Exercise: Website Automation With Selenium-Java TestNG
 
 <br>
-### Tool used in this Project:<br>
+
+### Tool used in this Project: <br>
  - Selenium
 <br><br>
 
-### Framework used in this Project:<br>
+### Framework used in this Project: <br>
  - TestNG
 <br><br>
 
@@ -25,7 +26,7 @@
  - The user can Delete the Account from the System.
    <br><br>
 
- ### How to run this project:<br>
+ ### How to run this project: <br>
  - Clone this project [Web-Automation-with-Selenium_TestNG](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2.git)
  - Hit the following command:
   ```
