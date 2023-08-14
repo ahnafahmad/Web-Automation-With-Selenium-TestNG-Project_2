@@ -1,18 +1,15 @@
 ## Automation Exercise: Website Automation With Selenium-Java TestNG
 
 
-
-### Tool used in this Project
+### Tool used in this Project:<br>
  - Selenium
+<br><br>
 
-
-
-### Framework used in this Project
+### Framework used in this Project:<br>
  - TestNG
+<br><br>
 
-
-
- ### Project Scenarios
+ ### Project Scenarios: <br>
  - The user can sign up to the System.
  - The user can Enter all the necessary information for creating an account. 
  - The user can log in to the System.
@@ -26,18 +23,18 @@
  - The User can Download the Invoice of the Order.
  - The User can log out from the system.
  - The user can Delete the Account from the System.
-   
+   <br><br>
 
-
- ### How to run this project:
+ ### How to run this project:<br>
  - Clone this project [Web-Automation-with-Selenium_TestNG](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2.git)
  - Hit the following command:
   ```
  gradle clean test
  ```
+<br><br>
 
- 
-  ### How to Generate an Allure Report: 
+
+  ### How to Generate an Allure Report: <br>
  Automated Automation Exercise website using Selenium and TestNG, where test cases are added for User Signup, User Login, Account Delete by the User from the System.
  Steps to generate the report:
  - Give the following commands by opening the terminal in the project folder to create the Allure Report:
@@ -47,9 +44,9 @@ allure generate allure-results --clean -o allure-report
  ```
  allure serve allure-results
 ```
+<br><br>
 
-
- ### Prerequisite
+ ### Prerequisite<br>
   - Some gradle dependencies are a must for running this project
   These are: 
  ```
@@ -88,11 +85,10 @@ allure generate allure-results --clean -o allure-report
 // https://mvnrepository.com/artifact/org.projectlombok/lombok
     testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
 ```
-
-
+<br><br>
 
 ### Selenium TestNG Automation Project Report Image
-
+<br>
 
 ![1](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/58dc41d1-d4fb-4547-b615-427a79946bcb)
 
@@ -125,9 +121,9 @@ allure generate allure-results --clean -o allure-report
 
 
 ![11](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/e92142a0-ed2c-4396-911d-21f0f3689300)
+<br><br>
 
-
-### Output Video of the Project
+### Output Video of the Project<br>
 
 
 Drive Link: 
