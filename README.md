@@ -118,3 +118,11 @@ allure generate allure-results --clean -o allure-report
 
 
 ![11](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2/assets/58990500/e92142a0-ed2c-4396-911d-21f0f3689300)
+
+
+## Output Video of the Project
+
+
+Drive Link: 
+
+https://drive.google.com/drive/folders/1vgUrwS6uMxOD1LOFONysIuG31gkEwBWb?usp=drive_link
