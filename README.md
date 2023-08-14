@@ -1,12 +1,15 @@
 ## Automation Exercise: Website Automation With Selenium-Java TestNG
 
 
+
 ### Tool used in this Project
  - Selenium
 
 
+
 ### Framework used in this Project
  - TestNG
+
 
 
  ### Project Scenarios
@@ -25,12 +28,14 @@
  - The user can Delete the Account from the System.
    
 
+
  ### How to run this project:
  - Clone this project [Web-Automation-with-Selenium_TestNG](https://github.com/ahnafahmad/Web-Automation-With-Selenium-TestNG-Project_2.git)
  - Hit the following command:
   ```
  gradle clean test
  ```
+
  
   ### How to Generate an Allure Report: 
  Automated Automation Exercise website using Selenium and TestNG, where test cases are added for User Signup, User Login, Account Delete by the User from the System.
@@ -42,6 +47,7 @@ allure generate allure-results --clean -o allure-report
  ```
  allure serve allure-results
 ```
+
 
  ### Prerequisite
   - Some gradle dependencies are a must for running this project
@@ -82,6 +88,7 @@ allure generate allure-results --clean -o allure-report
 // https://mvnrepository.com/artifact/org.projectlombok/lombok
     testAnnotationProcessor group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
 ```
+
 
 
 ### Selenium TestNG Automation Project Report Image
