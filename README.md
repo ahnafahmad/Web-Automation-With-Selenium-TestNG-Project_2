@@ -1,4 +1,4 @@
-# Web Automation With Selenium-Java TestNG
+# Automation Exercise: Website Automation With Selenium-Java TestNG
 
 
 ## Tool used in this Project
