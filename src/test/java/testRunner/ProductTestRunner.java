@@ -535,8 +535,8 @@ public class ProductTestRunner extends Setup {
         Assert.assertTrue(actualRecommendedItemsPage.equals(expectedRecommendedItemsPage));
 
 
-        Utils.waitForElement(driver, productPage.waitForThisProduct, 50);
-        if (productPage.waitForThisProduct.isDisplayed()) {
+        Utils.waitForElement(driver, productPage.waitForThisProduct.get(12), 50);
+        if (productPage.waitForThisProduct.get(12).isDisplayed()) {
             productPage.addToCart.get(68).click();
             Thread.sleep(2000);
         }

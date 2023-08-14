@@ -191,7 +191,7 @@ public class ProductPage {
     public WebElement verifyRecommendedProductDescription;
 
     @FindBy(xpath = "//p[contains(text(),'Blue')]")
-    public WebElement waitForThisProduct;
+    public List<WebElement> waitForThisProduct;
 
 
     @FindBy(className = "fa-angle-up")
